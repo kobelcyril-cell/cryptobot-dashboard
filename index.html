@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07110f">
+  <meta name="description" content="Persoenliches CryptoBot Performance-Dashboard">
+  <title>CryptoBot Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-glow" aria-hidden="true"></div>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div><p class="eyebrow">LIVE PORTFOLIO</p><h1>CryptoBot</h1></div>
+      </div>
+      <div class="status-wrap">
+        <span class="status" id="status"><i></i><span>Status wird geladen</span></span>
+        <time id="last-update">–</time>
+      </div>
+    </header>
+
+    <section class="hero-grid" aria-label="Portfolio-Uebersicht">
+      <article class="equity-card panel">
+        <div class="card-label">PORTFOLIOWERT</div>
+        <div class="equity-row"><strong id="equity">–</strong><span class="currency">USD</span></div>
+        <div class="performance-row"><span class="performance" id="return-total">–</span><span class="muted">seit Start</span></div>
+        <div class="mini-stats">
+          <div><span>Startkapital</span><b id="initial-capital">–</b></div>
+          <div><span>Heute</span><b id="return-today">–</b></div>
+        </div>
+      </article>
+      <article class="metric-card panel"><div class="metric-icon cash" aria-hidden="true">$</div><div><span>Verfuegbar</span><strong id="cash">–</strong><small>Cash</small></div></article>
+      <article class="metric-card panel"><div class="metric-icon exposure" aria-hidden="true">◒</div><div><span>Investiert</span><strong id="exposure">–</strong><small id="exposure-usd">–</small></div></article>
+      <article class="metric-card panel"><div class="metric-icon drawdown" aria-hidden="true">↘</div><div><span>Max. Drawdown</span><strong id="drawdown">–</strong><small>seit Start</small></div></article>
+    </section>
+
+    <section class="main-grid">
+      <article class="chart-panel panel">
+        <div class="panel-heading"><div><p class="eyebrow">PERFORMANCE</p><h2>Kapitalentwicklung</h2></div><div class="legend"><i></i> Equity</div></div>
+        <div class="chart-wrap"><canvas id="equity-chart" role="img" aria-label="Verlauf des Portfoliowerts"></canvas><div class="chart-tooltip" id="chart-tooltip" hidden></div></div>
+      </article>
+      <aside class="risk-panel panel">
+        <div class="panel-heading"><div><p class="eyebrow">RISIKO</p><h2>Kapitalverteilung</h2></div></div>
+        <div class="donut-wrap"><div class="donut" id="donut"><div><strong id="donut-value">–</strong><span>investiert</span></div></div></div>
+        <div class="allocation-list">
+          <div><span><i class="dot invested"></i>Positionen</span><b id="allocation-invested">–</b></div>
+          <div><span><i class="dot available"></i>Cash</span><b id="allocation-cash">–</b></div>
+        </div>
+        <div class="risk-limit"><span>Tagesverlust-Limit</span><b id="daily-loss-limit">–</b><div class="progress"><i id="loss-progress"></i></div></div>
+      </aside>
+    </section>
+
+    <section class="bottom-grid">
+      <article class="positions-panel panel">
+        <div class="panel-heading"><div><p class="eyebrow">PORTFOLIO</p><h2>Offene Positionen</h2></div><span class="count" id="position-count">0 Positionen</span></div>
+        <div class="table-wrap"><table><thead><tr><th>Asset</th><th>Wert</th><th>Anteil</th><th>P/L</th></tr></thead><tbody id="positions-body"></tbody></table><div class="empty-state" id="empty-positions" hidden>Aktuell sind keine Positionen offen.</div></div>
+      </article>
+      <article class="activity-panel panel">
+        <div class="panel-heading"><div><p class="eyebrow">HEUTE</p><h2>Aktivitaet</h2></div></div>
+        <div class="activity-stats"><div><strong id="trades-today">–</strong><span>Trades</span></div><div><strong id="fees-today">–</strong><span>Gebuehren</span></div><div><strong id="win-rate">–</strong><span>Trefferquote</span></div></div>
+        <div class="heartbeat"><span>Letzter Bot-Zyklus</span><b id="last-cycle">–</b></div>
+      </article>
+    </section>
+    <footer><span>CryptoBot Monitor</span><span>Nur Anzeige · keine Trading-Steuerung</span></footer>
+  </main>
+  <script src="dashboard.js" defer></script>
+</body>
+</html>
+

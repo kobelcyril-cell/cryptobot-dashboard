@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-04T16:37:18.786000Z",
+  "generated_at": "2026-09-04T16:42:19.815000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-04T16:37:18.786000Z",
-    "status": "BIG4: Noch nicht faellig | SCALP: Kein ADA-Signal",
+    "last_cycle": "2026-09-04T16:42:19.815000Z",
+    "status": "BIG4: Noch nicht faellig | SCALP: FEHLER (Big-4 laeuft weiter): Crypto.com Fehlercode 415: BELOW_MIN_ORDER_SIZE",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
     "initial_capital": 26.64466057865,
-    "equity": 26.69516882615,
+    "equity": 26.68982353615,
     "cash": 9.58944363615,
-    "exposure": 17.10572519,
-    "return_total_pct": 0.18956236034949367,
-    "return_today_pct": 0.18956236034949367,
+    "exposure": 17.1003799,
+    "return_total_pct": 0.16950096762046374,
+    "return_today_pct": 0.16950096762046374,
     "max_drawdown_pct": -1.0128377473730736
   },
   "recent_trades": [
@@ -133,33 +133,33 @@
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.50158742,
-      "allocation_pct": 25.76115670886283,
+      "value": 5.49985239,
+      "allocation_pct": 25.758190113877728,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 5.14032923,
-      "allocation_pct": 24.069566966760696,
-      "change_since_buy_pct": -2.452016839235522,
+      "value": 5.13890796,
+      "allocation_pct": 24.067731063487606,
+      "change_since_buy_pct": -2.478988267683676,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 3.24640639,
-      "allocation_pct": 15.20128235160238,
-      "change_since_buy_pct": -1.7726399942874294,
+      "value": 3.2451328,
+      "allocation_pct": 15.198362006799304,
+      "change_since_buy_pct": -1.811175337186898,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.21740215,
-      "allocation_pct": 15.065470136904995,
-      "change_since_buy_pct": -2.7193468032106285,
+      "value": 3.21648675,
+      "allocation_pct": 15.064200151246004,
+      "change_since_buy_pct": -2.747024633268752,
       "average_buy_price": 1.4452
     }
   ],
@@ -287,14 +287,18 @@
     {
       "time": "2026-09-04T16:34:28.798000Z",
       "value": 26.68414664615
+    },
+    {
+      "time": "2026-09-04T16:39:28.970000Z",
+      "value": 26.68256173615
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
       "status": "Noch nicht faellig",
-      "equity": 21.35613506092,
-      "return_pct": -19.78697963583618,
+      "equity": 21.35185882892,
+      "return_pct": -19.80304103849726,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
@@ -302,13 +306,13 @@
     },
     "scalping": {
       "name": "ADA Maker-Scalping",
-      "status": "Kein ADA-Signal",
-      "equity": 5.33903376523,
-      "return_pct": 31689.463339693575,
+      "status": "FEHLER (Big-4 laeuft weiter): Crypto.com Fehlercode 415: BELOW_MIN_ORDER_SIZE",
+      "equity": 5.33796470723,
+      "return_pct": 31683.09799690059,
       "completed_trades": 7,
       "fees": 0.0,
       "position_value": 0.0,
-      "active_order": false,
+      "active_order": true,
       "target_allocation_pct": 20.0,
       "actual_allocation_pct": 20.0,
       "split_transition": false

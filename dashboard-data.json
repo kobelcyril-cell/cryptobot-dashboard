@@ -1,23 +1,34 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-04T16:22:16.082000Z",
+  "generated_at": "2026-09-04T16:27:17.429000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-04T16:22:16.082000Z",
+    "last_cycle": "2026-09-04T16:27:17.429000Z",
     "status": "BIG4: Noch nicht faellig | SCALP: Offene ADA-Order wird ueberwacht",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
     "initial_capital": 26.64466057865,
-    "equity": 26.64894579615,
-    "cash": 9.58645563615,
-    "exposure": 17.06249016,
-    "return_total_pct": 0.01608283763777305,
-    "return_today_pct": 0.01608283763777305,
+    "equity": 26.64307952615,
+    "cash": 4.27603263615,
+    "exposure": 22.36704689,
+    "return_total_pct": -0.005933843650712051,
+    "return_today_pct": -0.005933843650712051,
     "max_drawdown_pct": -1.0128377473730736
   },
   "recent_trades": [
+    {
+      "time": "2026-09-04T16:22:55.169000Z",
+      "side": "BUY",
+      "symbol": "ADA",
+      "quantity": 24.9,
+      "price": 0.21327,
+      "value": 5.310423,
+      "fee": 0.0,
+      "fee_currency": "USD",
+      "liquidity": "SCALP"
+    },
     {
       "time": "2026-09-04T15:51:39.166000Z",
       "side": "SELL",
@@ -116,51 +127,48 @@
       "fee": 0.0,
       "fee_currency": "USD",
       "liquidity": "SCALP"
-    },
-    {
-      "time": "2026-09-04T14:19:44.840000Z",
-      "side": "BUY",
-      "symbol": "ADA",
-      "quantity": 23.4,
-      "price": 0.21337,
-      "value": 4.992858,
-      "fee": 0.0,
-      "fee_currency": "USD",
-      "liquidity": "SCALP"
     }
   ],
   "positions": [
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.48278341,
-      "allocation_pct": 25.717637443992736,
+      "value": 5.4820145,
+      "allocation_pct": 25.71969249378361,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 5.1271616,
-      "allocation_pct": 24.04955171219534,
-      "change_since_buy_pct": -2.70189883940211,
+      "value": 5.12375474,
+      "allocation_pct": 24.03886314535764,
+      "change_since_buy_pct": -2.7665507920380468,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 3.23972,
-      "allocation_pct": 15.196285928072461,
-      "change_since_buy_pct": -1.97495183044316,
+      "value": 3.2374912,
+      "allocation_pct": 15.189175095273917,
+      "change_since_buy_pct": -2.0423892100192678,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.21282515,
-      "allocation_pct": 15.070132485616748,
-      "change_since_buy_pct": -2.8577359535012454,
+      "value": 3.21236745,
+      "allocation_pct": 15.071303257413822,
+      "change_since_buy_pct": -2.871574868530307,
       "average_buy_price": 1.4452
+    },
+    {
+      "symbol": "ADA",
+      "name": "Scalping \u00b7 eigener Bestand",
+      "value": 5.311419,
+      "allocation_pct": 19.935454513757985,
+      "change_since_buy_pct": 0.018755568059267595,
+      "average_buy_price": 0.21327
     }
   ],
   "equity_history": [
@@ -275,14 +283,18 @@
     {
       "time": "2026-09-04T16:19:26.121000Z",
       "value": 26.64569058615
+    },
+    {
+      "time": "2026-09-04T16:24:27.304000Z",
+      "value": 26.64643791615
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
       "status": "Noch nicht faellig",
-      "equity": 21.31915663692,
-      "return_pct": 0.002039550041735481,
+      "equity": 21.31446362092,
+      "return_pct": 33.146445306469495,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
@@ -291,11 +303,11 @@
     "scalping": {
       "name": "ADA Maker-Scalping",
       "status": "Offene ADA-Order wird ueberwacht",
-      "equity": 5.32978915923,
-      "return_pct": 0.002039550041735481,
+      "equity": 5.32861590523,
+      "return_pct": -49.926819018875584,
       "completed_trades": 6,
       "fees": 0.0,
-      "position_value": 0.0,
+      "position_value": 5.311419,
       "active_order": true,
       "target_allocation_pct": 20.0,
       "actual_allocation_pct": 20.0,

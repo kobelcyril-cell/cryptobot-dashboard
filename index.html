@@ -59,9 +59,9 @@
         <div class="table-wrap"><table><thead><tr><th>Asset</th><th>Wert</th><th>Anteil</th><th>P/L</th></tr></thead><tbody id="positions-body"></tbody></table><div class="empty-state" id="empty-positions" hidden>Aktuell sind keine Positionen offen.</div></div>
       </article>
       <article class="activity-panel panel">
-        <div class="panel-heading"><div><p class="eyebrow">HEUTE</p><h2>Aktivitaet</h2></div></div>
-        <div class="activity-stats"><div><strong id="trades-today">–</strong><span>Trades</span></div><div><strong id="fees-today">–</strong><span>Gebuehren</span></div><div><strong id="win-rate">–</strong><span>Trefferquote</span></div></div>
-        <div class="heartbeat"><span>Letzter Bot-Zyklus</span><b id="last-cycle">–</b></div>
+        <div class="panel-heading"><div><p class="eyebrow">AUSFUEHRUNGEN</p><h2>Letzte Trades</h2></div><span class="trade-note">Exchange-Daten</span></div>
+        <div class="trades-list" id="trades-list"></div>
+        <div class="empty-state" id="empty-trades" hidden>Noch keine ausgefuehrten Bot-Trades gefunden.</div>
       </article>
     </section>
     <footer><span>CryptoBot Monitor</span><span>Nur Anzeige · keine Trading-Steuerung</span></footer>
@@ -69,4 +69,3 @@
   <script src="dashboard.js" defer></script>
 </body>
 </html>
-

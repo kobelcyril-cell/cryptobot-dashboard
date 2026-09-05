@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-05T11:19:08.707000Z",
+  "generated_at": "2026-09-05T11:24:09.284000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-05T11:19:08.707000Z",
-    "status": "BIG4: Noch nicht faellig | SCALP: Kein ADA-Signal",
+    "last_cycle": "2026-09-05T11:24:09.284000Z",
+    "status": "BIG4: Noch nicht faellig | SCALP: LIVE LIMIT BUY qty=25.0 price=0.21247 order_id=6142909991403607748",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
     "initial_capital": 26.64466057865,
-    "equity": 26.57176730975,
+    "equity": 26.56951995975,
     "cash": 9.47999372975,
-    "exposure": 17.09177358,
-    "return_total_pct": -0.27357552063698787,
-    "return_today_pct": 0.16597454321412372,
+    "exposure": 17.08952623,
+    "return_total_pct": -0.282010043543993,
+    "return_today_pct": 0.15750284465280548,
     "max_drawdown_pct": -1.0128377473730736
   },
   "recent_trades": [
@@ -133,33 +133,33 @@
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.49121446,
-      "allocation_pct": 25.831996776824777,
+      "value": 5.49136893,
+      "allocation_pct": 25.834908469925505,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 5.12772593,
-      "allocation_pct": 24.122059092953517,
-      "change_since_buy_pct": -2.691189553892568,
+      "value": 5.12806035,
+      "allocation_pct": 24.125672752878423,
+      "change_since_buy_pct": -2.684843268456562,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 3.2597792,
-      "allocation_pct": 15.334787304511952,
-      "change_since_buy_pct": -1.3680154142581888,
+      "value": 3.2581872,
+      "allocation_pct": 15.32859459323977,
+      "change_since_buy_pct": -1.416184971098266,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.21305399,
-      "allocation_pct": 15.114980651009574,
-      "change_since_buy_pct": -2.8508167983444825,
+      "value": 3.21190975,
+      "allocation_pct": 15.110875896825112,
+      "change_since_buy_pct": -2.8854137835593687,
       "average_buy_price": 1.4452
     }
   ],
@@ -1183,15 +1183,19 @@
     {
       "time": "2026-09-05T11:18:38.685000Z",
       "value": 26.57176730975
+    },
+    {
+      "time": "2026-09-05T11:23:38.935000Z",
+      "value": 26.56951995975
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
       "status": "Noch nicht faellig",
-      "equity": 21.2574138478,
-      "return_pct": -0.0028571538244039573,
-      "pnl_usd": -0.0006073625,
+      "equity": 21.2556159678,
+      "return_pct": -0.01343017389210669,
+      "pnl_usd": -0.0028547125,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
@@ -1199,14 +1203,14 @@
     },
     "scalping": {
       "name": "ADA Maker-Scalping",
-      "status": "Kein ADA-Signal",
-      "equity": 5.31435346195,
-      "return_pct": -1.360250486405251,
+      "status": "LIVE LIMIT BUY qty=25.0 price=0.21247 order_id=6142909991403607748",
+      "equity": 5.31390399195,
+      "return_pct": -1.360404663648178,
       "pnl_usd": -0.0722859064,
       "completed_trades": 27,
       "fees": 0.0111189064,
       "position_value": 0.0,
-      "active_order": false,
+      "active_order": true,
       "target_allocation_pct": 20.0,
       "actual_allocation_pct": 20.0,
       "split_transition": false
@@ -1214,7 +1218,7 @@
   },
   "performance_details": {
     "big4": {
-      "net_pnl_usd": -0.0006073625,
+      "net_pnl_usd": -0.0028547125,
       "fees_usd": 0.0723102845,
       "executions": 6,
       "note": "PnL als Portfolioerfolg abzueglich Scalping-PnL"
@@ -1246,7 +1250,7 @@
     }
   },
   "operations": {
-    "last_successful_api_at": "2026-09-05T11:19:08.772000Z",
+    "last_successful_api_at": "2026-09-05T11:24:09.346000Z",
     "big4": {
       "level": "ok",
       "status": "Noch nicht faellig",
@@ -1256,8 +1260,15 @@
     },
     "scalping": {
       "level": "ok",
-      "status": "Kein ADA-Signal",
-      "active_order": null
+      "status": "LIVE LIMIT BUY qty=25.0 price=0.21247 order_id=6142909991403607748",
+      "active_order": {
+        "side": "BUY",
+        "type": "LIMIT",
+        "quantity": 25.0,
+        "price": 0.21247,
+        "age_seconds": 0,
+        "warning": false
+      }
     },
     "privacy": "Aggregierte Botdaten; keine API-Keys, Secrets, Signaturen oder Order-IDs exportiert"
   }

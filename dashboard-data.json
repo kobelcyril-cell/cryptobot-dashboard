@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-05T01:12:18.709000Z",
+  "generated_at": "2026-09-05T01:17:19.810000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-05T01:12:18.709000Z",
-    "status": "BIG4: Noch nicht faellig | SCALP: Kein ADA-Signal",
+    "last_cycle": "2026-09-05T01:17:19.810000Z",
+    "status": "BIG4: Noch nicht faellig | SCALP: BUY-Limit zur Stornierung gesendet",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
     "initial_capital": 26.64466057865,
-    "equity": 26.54293028775,
+    "equity": 26.53395746775,
     "cash": 9.45986547775,
-    "exposure": 17.08306481,
-    "return_total_pct": -0.38180366606551963,
-    "return_today_pct": 0.057269375888116376,
+    "exposure": 17.07409199,
+    "return_total_pct": -0.4154795313425943,
+    "return_today_pct": 0.023445082260079988,
     "max_drawdown_pct": -1.0128377473730736
   },
   "recent_trades": [
@@ -133,33 +133,33 @@
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.49539826,
-      "allocation_pct": 25.879764406306982,
+      "value": 5.49361288,
+      "allocation_pct": 25.88010517596681,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 5.1333901,
-      "allocation_pct": 24.174940579041607,
-      "change_since_buy_pct": -2.583700648988376,
+      "value": 5.13144631,
+      "allocation_pct": 24.17395857853508,
+      "change_since_buy_pct": -2.6205879349391363,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 3.2483168,
-      "allocation_pct": 15.297466993966147,
-      "change_since_buy_pct": -1.7148362235067438,
+      "value": 3.2451328,
+      "allocation_pct": 15.287640394126147,
+      "change_since_buy_pct": -1.811175337186898,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.20595965,
-      "allocation_pct": 15.097992267829992,
-      "change_since_buy_pct": -3.0653196789371715,
+      "value": 3.2039,
+      "allocation_pct": 15.093394963294186,
+      "change_since_buy_pct": -3.127594796567949,
       "average_buy_price": 1.4452
     }
   ],
@@ -699,15 +699,19 @@
     {
       "time": "2026-09-05T01:11:38.683000Z",
       "value": 26.54293028775
+    },
+    {
+      "time": "2026-09-05T01:16:39.504000Z",
+      "value": 26.53395746775
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
       "status": "Noch nicht faellig",
-      "equity": 21.2343442302,
-      "return_pct": -0.04387127994948617,
-      "pnl_usd": -0.0093161325,
+      "equity": 21.2271659742,
+      "return_pct": -0.08616025025689572,
+      "pnl_usd": -0.0182889525,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
@@ -715,14 +719,14 @@
     },
     "scalping": {
       "name": "ADA Maker-Scalping",
-      "status": "Kein ADA-Signal",
-      "equity": 5.30858605755,
-      "return_pct": -1.7411077531140438,
+      "status": "BUY-Limit zur Stornierung gesendet",
+      "equity": 5.30679149355,
+      "return_pct": -1.7412693245599664,
       "pnl_usd": -0.0924141584,
       "completed_trades": 16,
       "fees": 0.0085831584,
       "position_value": 0.0,
-      "active_order": false,
+      "active_order": true,
       "target_allocation_pct": 20.0,
       "actual_allocation_pct": 20.0,
       "split_transition": false
@@ -730,7 +734,7 @@
   },
   "performance_details": {
     "big4": {
-      "net_pnl_usd": -0.0093161325,
+      "net_pnl_usd": -0.0182889525,
       "fees_usd": 0.0723102845,
       "executions": 6,
       "note": "PnL als Portfolioerfolg abzueglich Scalping-PnL"
@@ -762,7 +766,7 @@
     }
   },
   "operations": {
-    "last_successful_api_at": "2026-09-05T01:12:18.778000Z",
+    "last_successful_api_at": "2026-09-05T01:17:19.871000Z",
     "big4": {
       "level": "ok",
       "status": "Noch nicht faellig",
@@ -772,8 +776,15 @@
     },
     "scalping": {
       "level": "ok",
-      "status": "Kein ADA-Signal",
-      "active_order": null
+      "status": "BUY-Limit zur Stornierung gesendet",
+      "active_order": {
+        "side": "BUY",
+        "type": "LIMIT",
+        "quantity": 25.1,
+        "price": 0.21059,
+        "age_seconds": 130,
+        "warning": false
+      }
     },
     "privacy": "Aggregierte Botdaten; keine API-Keys, Secrets, Signaturen oder Order-IDs exportiert"
   }

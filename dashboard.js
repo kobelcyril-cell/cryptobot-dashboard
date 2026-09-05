@@ -21,7 +21,7 @@ fetch(`dashboard-data.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.o
 fetch(`dashboard-data.json?t=${Date.now()}`,{cache:"no-store"})
   .then(r=>r.json()).then(data=>renderRebalanceCountdown(data.operations?.big4));
 
-function renderStrategyChart(canvasId,tooltipId,valueId,history,color){
+function renderStrategyChart(canvasId,tooltipId,valueId,history,markers=[]){
   const canvas=$(canvasId),tip=$(tooltipId),value=$(valueId),ctx=canvas.getContext("2d");
   const rows=history||[];let points=[];
   value.textContent=rows.length?signedUsd(rows.at(-1).value):"–";
@@ -39,9 +39,11 @@ function renderStrategyChart(canvasId,tooltipId,valueId,history,color){
     const zero=y(0);ctx.strokeStyle="rgba(148,190,177,.18)";ctx.setLineDash([4,4]);
     ctx.beginPath();ctx.moveTo(pad.left,zero);ctx.lineTo(w-pad.right,zero);ctx.stroke();ctx.setLineDash([]);
     points=rows.map((row,i)=>({x:x(i),y:y(Number(row.value)),item:row}));
-    ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));
-    ctx.strokeStyle=color;ctx.lineWidth=2.2;ctx.lineJoin="round";ctx.shadowColor=color;ctx.shadowBlur=7;ctx.stroke();ctx.shadowBlur=0;
-    const last=points.at(-1);ctx.beginPath();ctx.arc(last.x,last.y,3.5,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();
+    ctx.lineWidth=2.2;ctx.lineJoin="round";
+    if(points.length===1){ctx.beginPath();ctx.arc(points[0].x,points[0].y,3.5,0,Math.PI*2);ctx.fillStyle=values[0]>=0?"#3ce5ae":"#ff6b78";ctx.fill()}
+    for(let i=1;i<points.length;i++){const positive=(values[i-1]+values[i])/2>=0,color=positive?"#3ce5ae":"#ff6b78";ctx.beginPath();ctx.moveTo(points[i-1].x,points[i-1].y);ctx.lineTo(points[i].x,points[i].y);ctx.strokeStyle=color;ctx.shadowColor=color;ctx.shadowBlur=6;ctx.stroke()}ctx.shadowBlur=0;
+    const last=points.at(-1);ctx.beginPath();ctx.arc(last.x,last.y,3.5,0,Math.PI*2);ctx.fillStyle=values.at(-1)>=0?"#3ce5ae":"#ff6b78";ctx.fill();
+    markers.forEach(marker=>{const stamp=new Date(marker.time).getTime(),index=rows.reduce((best,row,i)=>Math.abs(new Date(row.time).getTime()-stamp)<Math.abs(new Date(rows[best].time).getTime()-stamp)?i:best,0),p=points[index];if(!p)return;ctx.beginPath();if(marker.type==="buy"){ctx.moveTo(p.x,p.y-8);ctx.lineTo(p.x-5,p.y-1);ctx.lineTo(p.x+5,p.y-1)}else if(marker.type==="stop"){ctx.moveTo(p.x,p.y+8);ctx.lineTo(p.x-5,p.y+1);ctx.lineTo(p.x+5,p.y+1)}else{ctx.arc(p.x,p.y,4,0,Math.PI*2)}ctx.closePath();ctx.fillStyle=marker.type==="buy"?"#5dc9ff":marker.type==="stop"?"#ffbd5a":"#f1f8f5";ctx.fill()});
     ctx.fillStyle="#78978e";ctx.font="10px system-ui";ctx.textAlign="center";ctx.textBaseline="top";
     [0,rows.length-1].forEach(i=>ctx.fillText(new Date(rows[i].time).toLocaleDateString("de-CH",{day:"2-digit",month:"2-digit"}),x(i),h-pad.bottom+9));
   }
@@ -50,6 +52,6 @@ function renderStrategyChart(canvasId,tooltipId,valueId,history,color){
 }
 
 fetch(`dashboard-data.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
-  renderStrategyChart("big4-chart","big4-chart-tooltip","big4-chart-value",data.strategy_history?.big4,"#5dc9ff");
-  renderStrategyChart("scalp-chart","scalp-chart-tooltip","scalp-chart-value",data.strategy_history?.scalping,"#3ce5ae");
+  renderStrategyChart("big4-chart","big4-chart-tooltip","big4-chart-value",data.strategy_history?.big4);
+  renderStrategyChart("scalp-chart","scalp-chart-tooltip","scalp-chart-value",data.strategy_history?.scalping,data.strategy_markers?.scalping||[]);
 });

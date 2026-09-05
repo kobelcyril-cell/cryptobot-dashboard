@@ -20,3 +20,36 @@ fetch(`dashboard-data.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.o
 // Fallback for a publisher process that was started before countdown.js was added.
 fetch(`dashboard-data.json?t=${Date.now()}`,{cache:"no-store"})
   .then(r=>r.json()).then(data=>renderRebalanceCountdown(data.operations?.big4));
+
+function renderStrategyChart(canvasId,tooltipId,valueId,history,color){
+  const canvas=$(canvasId),tip=$(tooltipId),value=$(valueId),ctx=canvas.getContext("2d");
+  const rows=history||[];let points=[];
+  value.textContent=rows.length?signedUsd(rows.at(-1).value):"–";
+  function draw(){
+    const ratio=Math.min(devicePixelRatio||1,2),w=canvas.clientWidth,h=canvas.clientHeight;
+    canvas.width=Math.round(w*ratio);canvas.height=Math.round(h*ratio);
+    ctx.setTransform(ratio,0,0,ratio,0,0);ctx.clearRect(0,0,w,h);
+    if(!rows.length)return;
+    const pad={top:12,right:12,bottom:25,left:45},values=rows.map(row=>Number(row.value));
+    let min=Math.min(0,...values),max=Math.max(0,...values),range=max-min;
+    if(!range){range=Math.max(Math.abs(max)*.2,.02);min-=range;max+=range}
+    else{const buffer=range*.15;min-=buffer;max+=buffer}
+    const x=i=>pad.left+(rows.length===1?.5:i/(rows.length-1))*(w-pad.left-pad.right);
+    const y=v=>pad.top+(max-v)/(max-min)*(h-pad.top-pad.bottom);
+    const zero=y(0);ctx.strokeStyle="rgba(148,190,177,.18)";ctx.setLineDash([4,4]);
+    ctx.beginPath();ctx.moveTo(pad.left,zero);ctx.lineTo(w-pad.right,zero);ctx.stroke();ctx.setLineDash([]);
+    points=rows.map((row,i)=>({x:x(i),y:y(Number(row.value)),item:row}));
+    ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));
+    ctx.strokeStyle=color;ctx.lineWidth=2.2;ctx.lineJoin="round";ctx.shadowColor=color;ctx.shadowBlur=7;ctx.stroke();ctx.shadowBlur=0;
+    const last=points.at(-1);ctx.beginPath();ctx.arc(last.x,last.y,3.5,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();
+    ctx.fillStyle="#78978e";ctx.font="10px system-ui";ctx.textAlign="center";ctx.textBaseline="top";
+    [0,rows.length-1].forEach(i=>ctx.fillText(new Date(rows[i].time).toLocaleDateString("de-CH",{day:"2-digit",month:"2-digit"}),x(i),h-pad.bottom+9));
+  }
+  canvas.addEventListener("pointermove",event=>{if(!points.length)return;const rect=canvas.getBoundingClientRect(),mx=event.clientX-rect.left,nearest=points.reduce((a,b)=>Math.abs(b.x-mx)<Math.abs(a.x-mx)?b:a);tip.hidden=false;tip.style.left=`${nearest.x}px`;tip.style.top=`${nearest.y}px`;tip.innerHTML=`<b>${signedUsd(nearest.item.value)}</b><br>${new Date(nearest.item.time).toLocaleString("de-CH",{dateStyle:"medium",timeStyle:"short"})}`});
+  canvas.addEventListener("pointerleave",()=>tip.hidden=true);new ResizeObserver(draw).observe(canvas);draw();
+}
+
+fetch(`dashboard-data.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
+  renderStrategyChart("big4-chart","big4-chart-tooltip","big4-chart-value",data.strategy_history?.big4,"#5dc9ff");
+  renderStrategyChart("scalp-chart","scalp-chart-tooltip","scalp-chart-value",data.strategy_history?.scalping,"#3ce5ae");
+});

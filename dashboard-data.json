@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-06T04:03:01.670000Z",
+  "generated_at": "2026-09-06T04:08:04.559000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-06T04:03:01.670000Z",
-    "status": "BIG4: Noch nicht faellig | SCALP: Offene ADA-Order wird ueberwacht",
+    "last_cycle": "2026-09-06T04:08:04.559000Z",
+    "status": "BIG4: Noch nicht faellig | SCALP: FEHLER (Big-4 laeuft weiter): Crypto.com Fehlercode 415: BELOW_MIN_ORDER_SIZE",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
     "initial_capital": 26.64466057865,
-    "equity": 26.91193205695,
+    "equity": 26.89653582695,
     "cash": 9.51886359695,
-    "exposure": 17.39306846,
-    "return_total_pct": 1.003095826689423,
-    "return_today_pct": 0.8549389254882972,
+    "exposure": 17.37767223,
+    "return_total_pct": 0.9453122795710304,
+    "return_today_pct": 0.7972401384578148,
     "max_drawdown_pct": -1.0128377473730736
   },
   "recent_trades": [
@@ -133,33 +133,33 @@
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.51771096,
-      "allocation_pct": 25.628552737887933,
+      "value": 5.51504634,
+      "allocation_pct": 25.630839485628066,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 5.24301585,
-      "allocation_pct": 24.352654423439994,
-      "change_since_buy_pct": -0.5033337431926986,
+      "value": 5.24103025,
+      "allocation_pct": 24.357366519801744,
+      "change_since_buy_pct": -0.5410144571503948,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 3.3769504,
-      "allocation_pct": 15.685191204657041,
-      "change_since_buy_pct": 2.1772639691714835,
+      "value": 3.3680352,
+      "allocation_pct": 15.652736943846826,
+      "change_since_buy_pct": 1.907514450867052,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.25539125,
-      "allocation_pct": 15.120575712991664,
-      "change_since_buy_pct": -1.5707168557985054,
+      "value": 3.25356044,
+      "allocation_pct": 15.120722520425717,
+      "change_since_buy_pct": -1.62607281827252,
       "average_buy_price": 1.4452
     }
   ],
@@ -1979,15 +1979,19 @@
     {
       "time": "2026-09-06T03:58:50.036000Z",
       "value": 26.91704530695
+    },
+    {
+      "time": "2026-09-06T04:03:51.680000Z",
+      "value": 26.91466282695
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
       "status": "Noch nicht faellig",
-      "equity": 21.52954564556,
-      "return_pct": 1.3965916968990173,
-      "pnl_usd": 0.3006835175,
+      "equity": 21.51722866156,
+      "return_pct": 1.3258173831125373,
+      "pnl_usd": 0.2852872875,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
@@ -1995,9 +1999,9 @@
     },
     "scalping": {
       "name": "ADA Maker-Scalping",
-      "status": "Offene ADA-Order wird ueberwacht",
-      "equity": 5.38238641139,
-      "return_pct": -0.6207965811694535,
+      "status": "FEHLER (Big-4 laeuft weiter): Crypto.com Fehlercode 415: BELOW_MIN_ORDER_SIZE",
+      "equity": 5.37930716539,
+      "return_pct": -0.6211924166175063,
       "pnl_usd": -0.0334120392,
       "completed_trades": 47,
       "fees": 0.0184310392,
@@ -2010,7 +2014,7 @@
   },
   "performance_details": {
     "big4": {
-      "net_pnl_usd": 0.3006835175,
+      "net_pnl_usd": 0.2852872875,
       "fees_usd": 0.0723102845,
       "executions": 6,
       "note": "PnL als Portfolioerfolg abzueglich Scalping-PnL"
@@ -2806,6 +2810,10 @@
       {
         "time": "2026-09-06T03:59:10.372000Z",
         "value": 0.3057967675
+      },
+      {
+        "time": "2026-09-06T04:04:12.866000Z",
+        "value": 0.3034142875
       }
     ],
     "scalping": [
@@ -3572,6 +3580,10 @@
       {
         "time": "2026-09-06T03:59:10.372000Z",
         "value": -0.0334120392
+      },
+      {
+        "time": "2026-09-06T04:04:12.866000Z",
+        "value": -0.0334120392
       }
     ]
   },
@@ -4315,7 +4327,7 @@
     ]
   },
   "operations": {
-    "last_successful_api_at": "2026-09-06T04:03:01.744000Z",
+    "last_successful_api_at": "2026-09-06T04:08:04.625000Z",
     "big4": {
       "level": "ok",
       "status": "Noch nicht faellig",
@@ -4324,14 +4336,14 @@
       "split_rebalance_active": false
     },
     "scalping": {
-      "level": "ok",
-      "status": "Offene ADA-Order wird ueberwacht",
+      "level": "error",
+      "status": "FEHLER (Big-4 laeuft weiter): Crypto.com Fehlercode 415: BELOW_MIN_ORDER_SIZE",
       "active_order": {
         "side": "BUY",
         "type": "LIMIT",
         "quantity": 24.2,
-        "price": 0.2222,
-        "age_seconds": 60,
+        "price": 0.2215,
+        "age_seconds": 61,
         "warning": false
       }
     },

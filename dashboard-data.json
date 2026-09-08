@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-08T06:58:49.566000Z",
+  "generated_at": "2026-09-08T07:03:50.123000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-08T06:58:49.566000Z",
-    "status": "BIG4: Noch nicht faellig | SCALP: Kein ADA-Signal",
+    "last_cycle": "2026-09-08T07:03:50.123000Z",
+    "status": "BIG4: Noch nicht faellig | SCALP: FEHLER (Big-4 laeuft weiter): ADA-Botbestand groesser als verfuegbarer Exchange-Bestand",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
     "initial_capital": 26.64466057865,
-    "equity": 26.45088508295,
+    "equity": 26.42522864295,
     "cash": 9.43117018295,
-    "exposure": 17.0197149,
-    "return_total_pct": -0.7272582629754707,
-    "return_today_pct": -0.5713617786064269,
+    "exposure": 16.99405846,
+    "return_total_pct": -0.8235493751263163,
+    "return_today_pct": -0.6678041049334666,
     "max_drawdown_pct": -1.9848860416615235
   },
   "recent_trades": [
@@ -133,41 +133,41 @@
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.40090651,
-      "allocation_pct": 25.523278772443494,
+      "value": 5.39960316,
+      "allocation_pct": 25.54189422993206,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 5.15934914,
-      "allocation_pct": 24.381741498537178,
-      "change_since_buy_pct": -2.091076172328228,
+      "value": 5.16066591,
+      "allocation_pct": 24.41164265657554,
+      "change_since_buy_pct": -2.06608783947263,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 3.2702864,
-      "allocation_pct": 15.454522550683931,
-      "change_since_buy_pct": -1.0500963391136802,
+      "value": 3.2674208,
+      "allocation_pct": 15.455972227092332,
+      "change_since_buy_pct": -1.1368015414258188,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.16751285,
-      "allocation_pct": 14.968841496544808,
-      "change_since_buy_pct": -4.227788541378356,
+      "value": 3.16636859,
+      "allocation_pct": 14.97796212467568,
+      "change_since_buy_pct": -4.262386131308778,
       "average_buy_price": 1.4452
     },
     {
       "symbol": "ADA",
       "name": "Scalping \u00b7 eigener Bestand",
-      "value": 0.021647,
-      "allocation_pct": 0.0818384713105629,
-      "change_since_buy_pct": -3.0152329749103943,
+      "value": 0.021623,
+      "allocation_pct": 0.08182710655852286,
+      "change_since_buy_pct": -3.1227598566308243,
       "average_buy_price": 0.2232
     }
   ],
@@ -4419,46 +4419,50 @@
     {
       "time": "2026-09-08T06:56:59.068000Z",
       "value": 26.45082928295
+    },
+    {
+      "time": "2026-09-08T07:02:00.038000Z",
+      "value": 26.44631358295
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
       "status": "Noch nicht faellig",
-      "equity": 21.16072106636,
-      "return_pct": -0.44571655164505525,
-      "pnl_usd": -0.0943170425,
+      "equity": 21.11855991436,
+      "return_pct": -0.5675586387221434,
+      "pnl_usd": -0.1199494825,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
-      "actual_allocation_pct": 80.00004914769377
+      "actual_allocation_pct": 79.91817289344148
     },
     "scalping": {
       "name": "ADA Maker-Scalping",
-      "status": "Kein ADA-Signal",
-      "equity": 5.29016401659,
-      "return_pct": -1.880080143337368,
-      "pnl_usd": -0.0994584532,
+      "status": "FEHLER (Big-4 laeuft weiter): ADA-Botbestand groesser als verfuegbarer Exchange-Bestand",
+      "equity": 5.30666872859,
+      "return_pct": -1.8802416662441532,
+      "pnl_usd": -0.0994824532,
       "completed_trades": 72,
       "fees": 0.0329994532,
-      "position_value": 0.021647,
+      "position_value": 0.021623,
       "active_order": false,
       "target_allocation_pct": 20.0,
-      "actual_allocation_pct": 19.99995085230623,
+      "actual_allocation_pct": 20.081827106558524,
       "split_transition": false
     }
   },
   "performance_details": {
     "big4": {
-      "net_pnl_usd": -0.0943170425,
+      "net_pnl_usd": -0.1199494825,
       "fees_usd": 0.0723102845,
       "executions": 6,
       "note": "PnL als Portfolioerfolg abzueglich Scalping-PnL"
     },
     "scalping": {
       "realized_pnl_usd": -0.0987854532,
-      "unrealized_pnl_usd": -0.000673,
-      "net_pnl_usd": -0.0994584532,
+      "unrealized_pnl_usd": -0.000697,
+      "net_pnl_usd": -0.0994824532,
       "fees_usd": 0.0329994532,
       "completed_trades": 72,
       "win_rate_pct": 84.72222222222223,
@@ -4476,7 +4480,7 @@
         "trades": 72
       },
       "since_start": {
-        "pnl_usd": -0.0994584532,
+        "pnl_usd": -0.0994824532,
         "trades": 72
       }
     }
@@ -7678,6 +7682,10 @@
       {
         "time": "2026-09-08T06:58:09.246000Z",
         "value": -0.1044978925
+      },
+      {
+        "time": "2026-09-08T07:03:10.207000Z",
+        "value": -0.1140678125
       }
     ],
     "scalping": [
@@ -10876,6 +10884,10 @@
       {
         "time": "2026-09-08T06:58:09.246000Z",
         "value": -0.0994584532
+      },
+      {
+        "time": "2026-09-08T07:03:10.207000Z",
+        "value": -0.0994824532
       }
     ]
   },
@@ -12060,7 +12072,7 @@
     ]
   },
   "operations": {
-    "last_successful_api_at": "2026-09-08T06:58:49.693000Z",
+    "last_successful_api_at": "2026-09-08T07:03:50.250000Z",
     "big4": {
       "level": "ok",
       "status": "Noch nicht faellig",
@@ -12069,8 +12081,8 @@
       "split_rebalance_active": false
     },
     "scalping": {
-      "level": "ok",
-      "status": "Kein ADA-Signal",
+      "level": "error",
+      "status": "FEHLER (Big-4 laeuft weiter): ADA-Botbestand groesser als verfuegbarer Exchange-Bestand",
       "active_order": null
     },
     "privacy": "Aggregierte Botdaten; keine API-Keys, Secrets, Signaturen oder Order-IDs exportiert"

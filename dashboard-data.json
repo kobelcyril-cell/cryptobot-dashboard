@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-11T13:25:15.616000Z",
+  "generated_at": "2026-09-11T13:30:40.715000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-11T13:25:15.616000Z",
-    "status": "BIG4: Noch nicht faellig | SCALP: Kein ADA-Signal",
+    "last_cycle": "2026-09-11T13:30:40.715000Z",
+    "status": "BIG4: Noch nicht faellig | SCALP: FEHLER (Big-4 laeuft weiter): Crypto.com Fehlercode 43005: POST_ONLY_REJ",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
     "initial_capital": 26.64466057865,
-    "equity": 26.14705334615,
-    "cash": 9.19737623615,
-    "exposure": 16.94967711,
-    "return_total_pct": -1.8675682920829768,
-    "return_today_pct": 1.1698386116841508,
+    "equity": 26.14289183615,
+    "cash": 3.98450423615,
+    "exposure": 22.1583876,
+    "return_total_pct": -1.8831868434535826,
+    "return_today_pct": 1.1537366330211172,
     "max_drawdown_pct": -4.489571839104182
   },
   "recent_trades": [
@@ -133,33 +133,33 @@
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.35999668,
-      "allocation_pct": 25.624286458980798,
+      "value": 5.35389027,
+      "allocation_pct": 25.59916813887399,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 5.24088394,
-      "allocation_pct": 25.054849731144223,
-      "change_since_buy_pct": -0.5437909807498863,
+      "value": 5.23565869,
+      "allocation_pct": 25.033853957389145,
+      "change_since_buy_pct": -0.6429505046255165,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 3.23048639,
-      "allocation_pct": 15.44383580834583,
-      "change_since_buy_pct": -2.2543355626882002,
+      "value": 3.2244368,
+      "allocation_pct": 15.417368611174917,
+      "change_since_buy_pct": -2.4373795761079,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.1183101,
-      "allocation_pct": 14.907559843923831,
-      "change_since_buy_pct": -5.715471907002491,
+      "value": 3.11716585,
+      "allocation_pct": 14.904461744021896,
+      "change_since_buy_pct": -5.750069194575145,
       "average_buy_price": 1.4452
     }
   ],
@@ -7883,38 +7883,42 @@
     {
       "time": "2026-09-11T13:23:23.880000Z",
       "value": 26.16259052615
+    },
+    {
+      "time": "2026-09-11T13:28:26.868000Z",
+      "value": 26.09940933615
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
       "status": "Noch nicht faellig",
-      "equity": 20.91764267692,
-      "return_pct": -0.7893257322105741,
-      "pnl_usd": -0.1651288325,
+      "equity": 26.14154945892,
+      "return_pct": -0.8091045381405916,
+      "pnl_usd": -0.1692903425,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
-      "actual_allocation_pct": 80.0
+      "actual_allocation_pct": 99.99486523052455
     },
     "scalping": {
       "name": "ADA Maker-Scalping",
-      "status": "Kein ADA-Signal",
-      "equity": 5.22941066923,
-      "return_pct": -6.361014583880382,
+      "status": "FEHLER (Big-4 laeuft weiter): Crypto.com Fehlercode 43005: POST_ONLY_REJ",
+      "equity": 0.00134237723,
+      "return_pct": -6.369661130777265,
       "pnl_usd": -0.3324784,
       "completed_trades": 177,
       "fees": 0.0730244,
       "position_value": 0.0,
-      "active_order": false,
+      "active_order": true,
       "target_allocation_pct": 20.0,
-      "actual_allocation_pct": 20.0,
-      "split_transition": false
+      "actual_allocation_pct": 0.0051347694754402835,
+      "split_transition": true
     }
   },
   "performance_details": {
     "big4": {
-      "net_pnl_usd": -0.1651288325,
+      "net_pnl_usd": -0.1692903425,
       "fees_usd": 0.0723102845,
       "executions": 6,
       "note": "PnL als Portfolioerfolg abzueglich Scalping-PnL"
@@ -14610,6 +14614,10 @@
       {
         "time": "2026-09-11T13:23:23.880000Z",
         "value": -0.1495916525
+      },
+      {
+        "time": "2026-09-11T13:28:26.868000Z",
+        "value": -0.2127728425
       }
     ],
     "scalping": [
@@ -21276,6 +21284,10 @@
       {
         "time": "2026-09-11T13:23:23.880000Z",
         "value": -0.3324784
+      },
+      {
+        "time": "2026-09-11T13:28:26.868000Z",
+        "value": -0.3324784
       }
     ]
   },
@@ -24084,7 +24096,7 @@
     ]
   },
   "operations": {
-    "last_successful_api_at": "2026-09-11T13:25:15.802000Z",
+    "last_successful_api_at": "2026-09-11T13:30:40.870000Z",
     "big4": {
       "level": "ok",
       "status": "Noch nicht faellig",
@@ -24093,9 +24105,16 @@
       "split_rebalance_active": false
     },
     "scalping": {
-      "level": "ok",
-      "status": "Kein ADA-Signal",
-      "active_order": null
+      "level": "error",
+      "status": "FEHLER (Big-4 laeuft weiter): Crypto.com Fehlercode 43005: POST_ONLY_REJ",
+      "active_order": {
+        "side": "BUY",
+        "type": "LIMIT",
+        "quantity": 25.2,
+        "price": 0.20686,
+        "age_seconds": 92,
+        "warning": false
+      }
     },
     "privacy": "Aggregierte Botdaten; keine API-Keys, Secrets, Signaturen oder Order-IDs exportiert"
   }

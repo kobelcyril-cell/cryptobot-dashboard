@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-11T03:57:22.087000Z",
+  "generated_at": "2026-09-11T04:02:15.235000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-11T03:57:22.087000Z",
-    "status": "BIG4: Noch nicht faellig | SCALP: Kein ADA-Signal",
+    "last_cycle": "2026-09-11T04:02:15.235000Z",
+    "status": "BIG4: Noch nicht faellig | SCALP: LIVE LIMIT BUY qty=24.9 price=0.20752 order_id=6142909992086369748",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
     "initial_capital": 26.64466057865,
-    "equity": 25.90846282695,
+    "equity": 25.91226706695,
     "cash": 9.26520294695,
-    "exposure": 16.64325988,
-    "return_total_pct": -2.7630216925709505,
-    "return_today_pct": 0.24666902916229722,
+    "exposure": 16.64706412,
+    "return_total_pct": -2.74874401022341,
+    "return_today_pct": 0.26138863606197044,
     "max_drawdown_pct": -4.297871836205125
   },
   "recent_trades": [
@@ -133,33 +133,33 @@
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.29905259,
-      "allocation_pct": 25.566224371327436,
+      "value": 5.3010014,
+      "allocation_pct": 25.5718719357115,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 5.11027359,
-      "allocation_pct": 24.65542641478275,
-      "change_since_buy_pct": -3.022382458522129,
+      "value": 5.11286532,
+      "allocation_pct": 24.664309122344427,
+      "change_since_buy_pct": -2.9731992208178686,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 3.1613936,
-      "allocation_pct": 15.25270729643364,
-      "change_since_buy_pct": -4.344894026974952,
+      "value": 3.1620304,
+      "allocation_pct": 15.253539915236884,
+      "change_since_buy_pct": -4.325626204238921,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.0725401,
-      "allocation_pct": 14.82401773757464,
-      "change_since_buy_pct": -7.099363409908663,
+      "value": 3.071167,
+      "allocation_pct": 14.815217595902404,
+      "change_since_buy_pct": -7.140880154995848,
       "average_buy_price": 1.4452
     }
   ],
@@ -7441,9 +7441,9 @@
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
       "status": "Noch nicht faellig",
-      "equity": 20.72677026156,
-      "return_pct": -2.2750217869663496,
-      "pnl_usd": -0.4715460625,
+      "equity": 20.72981365356,
+      "return_pct": -2.2563310002255217,
+      "pnl_usd": -0.4677418225,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
@@ -7451,14 +7451,14 @@
     },
     "scalping": {
       "name": "ADA Maker-Scalping",
-      "status": "Kein ADA-Signal",
-      "equity": 5.18169256539,
-      "return_pct": -5.107763087522911,
+      "status": "LIVE LIMIT BUY qty=24.9 price=0.20752 order_id=6142909992086369748",
+      "equity": 5.18245341339,
+      "return_pct": -5.107063353386973,
       "pnl_usd": -0.2646516892,
       "completed_trades": 161,
       "fees": 0.0677196892,
       "position_value": 0.0,
-      "active_order": false,
+      "active_order": true,
       "target_allocation_pct": 20.0,
       "actual_allocation_pct": 20.0,
       "split_transition": false
@@ -7466,7 +7466,7 @@
   },
   "performance_details": {
     "big4": {
-      "net_pnl_usd": -0.4715460625,
+      "net_pnl_usd": -0.4677418225,
       "fees_usd": 0.0723102845,
       "executions": 6,
       "note": "PnL als Portfolioerfolg abzueglich Scalping-PnL"
@@ -22502,7 +22502,7 @@
     ]
   },
   "operations": {
-    "last_successful_api_at": "2026-09-11T03:57:22.294000Z",
+    "last_successful_api_at": "2026-09-11T04:02:15.420000Z",
     "big4": {
       "level": "ok",
       "status": "Noch nicht faellig",
@@ -22512,8 +22512,15 @@
     },
     "scalping": {
       "level": "ok",
-      "status": "Kein ADA-Signal",
-      "active_order": null
+      "status": "LIVE LIMIT BUY qty=24.9 price=0.20752 order_id=6142909992086369748",
+      "active_order": {
+        "side": "BUY",
+        "type": "LIMIT",
+        "quantity": 24.9,
+        "price": 0.20752,
+        "age_seconds": 0,
+        "warning": false
+      }
     },
     "privacy": "Aggregierte Botdaten; keine API-Keys, Secrets, Signaturen oder Order-IDs exportiert"
   }

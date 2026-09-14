@@ -1,6 +1,58 @@
 "use strict";
 const $=id=>document.getElementById(id);
 const money=new Intl.NumberFormat("de-CH",{minimumFractionDigits:2,maximumFractionDigits:2});
+function renderAdaActivity(data){
+  const a=data.ada_activity;if(!a){$("ada-mode").textContent="Export wartet auf Neustart";
+    for(const id of ["scalp-return","scalp-realized","scalp-unrealized","scalp-fees","scalp-net","stat-trades","stat-winrate","stat-avg-win","stat-avg-loss","stat-maker","stat-maker-taker","period-24h","period-7d","period-all"])$(id).textContent="–";
+    $("scalp-detail").textContent="Neue ADA-Kennzahlen nach Bot-Neustart verfügbar";return}
+  const amount=n=>`${Number(n)>0?"+":""}${Number(n).toFixed(4)} USD`;
+  const price=n=>`${Number(n).toFixed(5)} USD`;
+  const date=t=>new Date(t).toLocaleString("de-CH",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"});
+  const labels={waiting:"Wartet auf Einstieg",buy_pending:"Kauflimit wartet",position:"Position offen",paused:"Einstieg pausiert",error:"Bot meldet einen Fehler"};
+  $("ada-mode").textContent=labels[a.mode]||"Status unbekannt";
+  $("ada-period").textContent=a.started_at?`Seit ${date(a.started_at)} · einschließlich der Anpassung vom 13.09. · Datenstand ${date(a.data_at)}`:"Test beginnt nach Schließen des Altbestands";
+  $("ada-stats-period").textContent=`ADA · ${a.started_at?`seit ${date(a.started_at)}`:"Test noch nicht gestartet"} · Gebühren bereits im Netto enthalten`;
+  const steps=$("ada-steps");steps.replaceChildren();
+  for(let i=0;i<a.required_closes;i++){const dot=document.createElement("i");dot.classList.toggle("on",i<(a.signal?.falling_closes||0));steps.append(dot)}
+  $("ada-signal-text").textContent=a.signal?`${a.signal.falling_closes} von ${a.required_closes} fallenden Schlusskursen`:"Signalstatus nach Bot-Neustart verfügbar";
+  $("ada-trend").textContent=a.signal?`Trendfilter ${a.signal.trend_ok?"erfüllt":"nicht erfüllt"} · Kerze ${date(a.signal.candle_at)}`:"";
+  const box=$("ada-position");box.hidden=!a.position&&!a.active_order;
+  if(a.position){const p=a.position;box.textContent=`Einstieg ${price(p.entry_price)} · Offen ${amount(p.unrealized_pnl_usd)} · Haltedauer ${duration((new Date(a.data_at)-new Date(p.opened_at))/1000)} · Ziel ${p.target_price?price(p.target_price):"–"} · Stop-Schwelle ${p.stop_price?price(p.stop_price):"–"}`}
+  else if(a.active_order){box.textContent=`Kauflimit ${price(a.active_order.price)} · ${a.active_order.quantity} ADA · offen seit ${duration(a.active_order.age_seconds)}`}
+  const list=$("ada-timeline");list.replaceChildren();
+  const reasons={TAKE_PROFIT:"Gewinnziel erreicht",STOP_LOSS:"Stop-Ausstieg ausgeführt",TIMEOUT:"Zeitlimit erreicht",DAY_END:"Tagesende",SPLIT_ADJUSTMENT:"Kapitalanpassung"};
+  for(const t of a.timeline){const card=document.createElement("article");card.className="ada-trade-card";
+    const gain=document.createElement("strong");gain.textContent=amount(t.net_pnl_usd);gain.className=t.net_pnl_usd>=0?"positive":"negative";
+    const reason=document.createElement("span");reason.className="ada-reason";reason.textContent=reasons[t.reason]||"Position geschlossen";
+    const detail=document.createElement("small");detail.textContent=`${price(t.entry_price)} → ${price(t.exit_price)} · ${duration(t.hold_seconds)}`;
+    const stamp=document.createElement("small");stamp.textContent=date(t.closed_at);card.append(gain,reason,detail,stamp);list.append(card)}
+  if(!a.timeline.length)list.textContent="Noch keine abgeschlossenen Trades im neuen Test.";
+  const more=$("ada-more");more.hidden=a.timeline.length<=6;let expanded=false;
+  const fold=()=>{[...list.children].forEach((card,i)=>card.hidden=!expanded&&i>=6);more.textContent=expanded?"Weniger anzeigen":`${a.timeline.length-6} weitere Trades anzeigen`;more.setAttribute("aria-expanded",String(expanded))};
+  more.onclick=()=>{expanded=!expanded;fold()};fold();
+  $("ada-integrity").textContent=a.count_matches_state?"Ein Trade umfasst Kauf und vollständigen Verkauf; Teilfüllungen werden zusammengefasst.":"Die rekonstruierte Trade-Anzahl weicht vom Zähler ab. Historie bitte prüfen.";
+  const s=data.performance_details.scalping;
+  for(const [id,key] of [["scalp-realized","realized_pnl_usd"],["scalp-unrealized","unrealized_pnl_usd"],["scalp-net","net_pnl_usd"],["stat-avg-win","average_win_usd"],["stat-avg-loss","average_loss_usd"]])$(id).textContent=s[key]==null?"–":amount(s[key]);
+  $("scalp-fees").textContent=`${Number(s.fees_usd).toFixed(4)} USD`;
+  for(const [id,key] of [["period-24h","last_24h"],["period-7d","last_7d"],["period-all","since_start"]])$(id).textContent=`${amount(s[key].pnl_usd)} · ${s[key].trades} Trades`;
+  drawAdaPrice(a);
+}
+function drawAdaPrice(a){
+ const canvas=$("ada-price-chart"),ctx=canvas.getContext("2d"),rows=(a.candles||[]).filter(r=>Number.isFinite(Number(r.value)));
+ $("ada-chart-empty").hidden=rows.length>1;
+ $("ada-price-time").textContent=rows.length?`M1 · ${new Date(rows.at(-1).time).toLocaleString("de-CH")}`:"Noch keine Kursdaten";
+ function draw(){const w=canvas.clientWidth,h=canvas.clientHeight,dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);if(rows.length<2)return;
+ const levels=a.position?[[a.position.entry_price,"Einstieg","#5dc9ff"],[a.position.target_price,"Ziel","#3ce5ae"],[a.position.stop_price,"Stop","#ffbd5a"]].filter(x=>x[0]>0):[];
+ const vals=rows.map(r=>Number(r.value)).concat(levels.map(x=>x[0]));let lo=Math.min(...vals),hi=Math.max(...vals),pad=Math.max((hi-lo)*.15,.00005);lo-=pad;hi+=pad;
+ const t0=Date.parse(rows[0].time),t1=Date.parse(rows.at(-1).time),x=t=>68+(t-t0)/(t1-t0)*(w-85),y=v=>14+(hi-v)/(hi-lo)*(h-40);
+ ctx.font="11px system-ui";ctx.textAlign="right";ctx.fillStyle="#78978e";
+ for(let i=0;i<4;i++){let v=lo+(hi-lo)*i/3;ctx.fillText(v.toFixed(5),60,y(v)+4);ctx.strokeStyle="#20392f";ctx.beginPath();ctx.moveTo(68,y(v));ctx.lineTo(w-15,y(v));ctx.stroke()}
+ ctx.beginPath();rows.forEach((r,i)=>i?ctx.lineTo(x(Date.parse(r.time)),y(r.value)):ctx.moveTo(x(Date.parse(r.time)),y(r.value)));ctx.strokeStyle="#3ce5ae";ctx.lineWidth=2;ctx.stroke();
+ for(const [v,label,color] of levels){ctx.strokeStyle=color;ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(68,y(v));ctx.lineTo(w-15,y(v));ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=color;ctx.fillText(label,w-18,y(v)-5)}
+ for(const m of a.markers||[]){const t=Date.parse(m.time);if(t<t0||t>t1)continue;ctx.fillStyle=m.side==="BUY"?"#5dc9ff":"#ffffff";ctx.beginPath();ctx.arc(x(t),y(m.price),4,0,Math.PI*2);ctx.fill()}
+ ctx.fillStyle="#78978e";ctx.textAlign="left";ctx.fillText(new Date(t0).toLocaleTimeString("de-CH",{hour:"2-digit",minute:"2-digit"}),68,h-4);ctx.textAlign="right";ctx.fillText(new Date(t1).toLocaleTimeString("de-CH",{hour:"2-digit",minute:"2-digit"}),w-15,h-4);
+ }new ResizeObserver(draw).observe(canvas);draw();
+}
 const pct=(value,signed=false)=>`${signed&&value>0?"+":""}${Number(value).toFixed(2)} %`;
 const usd=value=>`${money.format(Number(value))} USD`;
 function performance(el,value){const n=Number(value);el.textContent=pct(n,true);el.classList.toggle("negative",n<0);el.classList.toggle("positive",n>=0)}
@@ -15,7 +67,7 @@ let rebalanceTimer;
 function renderRebalanceCountdown(big4){clearInterval(rebalanceTimer);const box=$("rebalance-countdown"),at=$("rebalance-at"),target=new Date(big4?.next_rebalance_at);at.textContent=Number.isFinite(target.getTime())?target.toLocaleString("de-CH",{dateStyle:"medium",timeStyle:"short"}):"–";const draw=()=>{if(big4?.split_rebalance_active){box.textContent="Umschichtung laeuft";box.parentElement.classList.add("due");return}const left=target.getTime()-Date.now();if(!Number.isFinite(left)||left<=0){box.textContent="Jetzt faellig";box.parentElement.classList.add("due");return}box.parentElement.classList.remove("due");const total=Math.floor(left/1000),days=Math.floor(total/86400),hours=Math.floor(total%86400/3600),minutes=Math.floor(total%3600/60),seconds=total%60;box.textContent=`${days} T ${String(hours).padStart(2,"0")} Std ${String(minutes).padStart(2,"0")} Min ${String(seconds).padStart(2,"0")} Sek`};draw();rebalanceTimer=setInterval(draw,1000)}
 function renderInsights(details,operations,strategies){if(!details||!operations)return;const b=details.big4||{},s=details.scalping||{};$("scalp-stats-name").textContent=strategies?.scalping?.name||"Scalping";$("big4-realized").textContent="–";$("big4-fees").textContent=usd(b.fees_usd||0);$("big4-net").textContent=signedUsd(b.net_pnl_usd);$("scalp-realized").textContent=signedUsd(s.realized_pnl_usd);$("scalp-unrealized").textContent=signedUsd(s.unrealized_pnl_usd);$("scalp-fees").textContent=usd(s.fees_usd||0);$("scalp-net").textContent=signedUsd(s.net_pnl_usd);$("stat-trades").textContent=String(s.completed_trades??0);$("stat-winrate").textContent=s.win_rate_pct==null?"–":pct(s.win_rate_pct);$("stat-avg-win").textContent=s.average_win_usd==null?"–":signedUsd(s.average_win_usd);$("stat-avg-loss").textContent=s.average_loss_usd==null?"–":signedUsd(s.average_loss_usd);$("stat-maker").textContent=s.maker_share_pct==null?"–":pct(s.maker_share_pct);$("stat-maker-taker").textContent=`${s.maker_fills||0} / ${s.taker_fills||0}`;const period=(id,row)=>$(id).textContent=`${signedUsd(row?.pnl_usd||0)} · ${row?.trades||0} Trades`;period("period-24h",s.last_24h);period("period-7d",s.last_7d);period("period-all",s.since_start);const health=(id,textId,row)=>{const dot=$(id);dot.classList.toggle("error",row?.level==="error");$(textId).textContent=row?.status||"–"};health("big4-health","big4-health-text",operations.big4);health("scalp-health","scalp-health-text",operations.scalping);$("api-success").textContent=new Date(operations.last_successful_api_at).toLocaleString("de-CH",{dateStyle:"short",timeStyle:"medium"});const order=operations.scalping?.active_order,box=$("active-order");box.classList.toggle("warning",Boolean(order?.warning));if(order){$("active-order-main").textContent=`${order.side} ${order.type} · ${order.quantity}`;$("active-order-detail").textContent=`Preis ${usd(order.price)} · offen seit ${duration(order.age_seconds)}${order.warning?" · Bitte prüfen":""}`}else{$("active-order-main").textContent="Keine";$("active-order-detail").textContent="–"}$("privacy-note").textContent=operations.privacy||"Nur aggregierte Daten; keine Zugangsdaten."}
 function render(data){const p=data.portfolio;updateStatus(data.generated_at,data.bot.mode);$("equity").textContent=money.format(p.equity);$("initial-capital").textContent=usd(p.initial_capital);performance($("return-total"),p.return_total_pct);performance($("return-today"),p.return_today_pct);$("cash").textContent=usd(p.cash);$("exposure").textContent=pct(p.exposure/p.equity*100);$("exposure-usd").textContent=usd(p.exposure);$("drawdown").textContent=pct(p.max_drawdown_pct);const exposure=Math.max(0,Math.min(100,p.exposure/p.equity*100));$("donut").style.setProperty("--value",exposure);$("donut-value").textContent=`${exposure.toFixed(0)} %`;$("allocation-invested").textContent=usd(p.exposure);$("allocation-cash").textContent=usd(p.cash);renderStrategies(data.strategies);renderInsights(data.performance_details,data.operations,data.strategies);renderPositions(data.positions||[]);renderTrades(data.recent_trades||[]);renderChart(data.equity_history||[])}
-fetch(`dashboard-data.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json()}).then(render).catch(error=>{console.error("Dashboard-Daten konnten nicht geladen werden:",error);$("status").classList.add("offline");$("status").querySelector("span").textContent="DATEN NICHT ERREICHBAR"});
+fetch(`dashboard-data.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json()}).then(data=>{render(data);renderAdaActivity(data)}).catch(error=>{console.error("Dashboard-Daten konnten nicht geladen werden:",error);$("status").classList.add("offline");$("status").querySelector("span").textContent="DATEN NICHT ERREICHBAR"});
 
 // Fallback for a publisher process that was started before countdown.js was added.
 fetch(`dashboard-data.json?t=${Date.now()}`,{cache:"no-store"})
@@ -53,5 +105,5 @@ function renderStrategyChart(canvasId,tooltipId,valueId,history,markers=[]){
 
 fetch(`dashboard-data.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).then(data=>{
   renderStrategyChart("big4-chart","big4-chart-tooltip","big4-chart-value",data.strategy_history?.big4);
-  renderStrategyChart("scalp-chart","scalp-chart-tooltip","scalp-chart-value",data.strategy_history?.scalping,data.strategy_markers?.scalping||[]);
+  renderStrategyChart("scalp-chart","scalp-chart-tooltip","scalp-chart-value",data.ada_activity?data.strategy_history?.scalping:[],data.ada_activity?data.strategy_markers?.scalping||[]:[]);
 });

@@ -1,23 +1,34 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-16T11:55:51.133000Z",
+  "generated_at": "2026-09-16T12:00:53.273000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-16T11:55:51.133000Z",
-    "status": "BIG4: Noch nicht faellig | SCALP: Warte auf naechste abgeschlossene M1-Kerze | Test-PnL=-0.0326 USD, Trades=24",
+    "last_cycle": "2026-09-16T12:00:53.273000Z",
+    "status": "BIG4: Noch nicht faellig | SCALP: ADA-Post-only-Order wird ueberwacht | Test-PnL=-0.0326 USD, Trades=24",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
     "initial_capital": 26.64466057865,
-    "equity": 25.66545671115,
-    "cash": 10.48297491115,
-    "exposure": 15.1824818,
-    "return_total_pct": -3.67504725612689,
-    "return_today_pct": 0.3239415129931095,
+    "equity": 25.65493289115,
+    "cash": 5.36420591115,
+    "exposure": 20.29072698,
+    "return_total_pct": -3.714544175102216,
+    "return_today_pct": 0.2828048554983456,
     "max_drawdown_pct": -5.607401666598422
   },
   "recent_trades": [
+    {
+      "time": "2026-09-16T11:58:00.265000Z",
+      "side": "BUY",
+      "symbol": "ADA",
+      "quantity": 26.3,
+      "price": 0.19463,
+      "value": 5.118769,
+      "fee": 0.0,
+      "fee_currency": "USD",
+      "liquidity": "SCALP"
+    },
     {
       "time": "2026-09-16T11:42:24.922000Z",
       "side": "SELL",
@@ -116,51 +127,48 @@
       "fee": 0.0,
       "fee_currency": "USD",
       "liquidity": "SCALP"
-    },
-    {
-      "time": "2026-09-16T01:29:48.484000Z",
-      "side": "BUY",
-      "symbol": "ADA",
-      "quantity": 26.3,
-      "price": 0.19475,
-      "value": 5.121925,
-      "fee": 0.0,
-      "fee_currency": "USD",
-      "liquidity": "SCALP"
     }
   ],
   "positions": [
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.25348451,
-      "allocation_pct": 25.58635800409163,
+      "value": 5.25016478,
+      "allocation_pct": 25.58067878347049,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 3.84565685,
-      "allocation_pct": 18.72973123603772,
-      "change_since_buy_pct": -4.073076602715385,
+      "value": 3.84589536,
+      "allocation_pct": 18.738576399310574,
+      "change_since_buy_pct": -4.067127156003964,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 3.11904639,
-      "allocation_pct": 15.190877105281423,
-      "change_since_buy_pct": -5.626204541493595,
+      "value": 3.1161808,
+      "allocation_pct": 15.183146323269895,
+      "change_since_buy_pct": -5.7129094412331405,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 2.96429405,
-      "allocation_pct": 14.437177581532202,
-      "change_since_buy_pct": -10.37226681428176,
+      "value": 2.95971704,
+      "allocation_pct": 14.42079897732354,
+      "change_since_buy_pct": -10.510656266930145,
       "average_buy_price": 1.4452
+    },
+    {
+      "symbol": "ADA",
+      "name": "Scalping \u00b7 eigener Bestand",
+      "value": 5.11798,
+      "allocation_pct": 19.949301842709218,
+      "change_since_buy_pct": -0.015413862200071932,
+      "average_buy_price": 0.19463
     }
   ],
   "unmanaged_assets": {},
@@ -12772,52 +12780,56 @@
     {
       "time": "2026-09-16T11:55:11.446000Z",
       "value": 25.66034532115
+    },
+    {
+      "time": "2026-09-16T12:00:13.691000Z",
+      "value": 25.66619104115
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
       "status": "Noch nicht faellig",
-      "equity": 20.53236536892,
-      "return_pct": -3.25735315895937,
-      "pnl_usd": -0.6688084675,
+      "equity": 20.52473531292,
+      "return_pct": -3.306141085642453,
+      "pnl_usd": -0.6785432875,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
-      "actual_allocation_pct": 80.0
+      "actual_allocation_pct": 80.00307543193875
     },
     "scalping": {
       "name": "ADA \u00b7 aktueller Test",
-      "status": "Warte auf naechste abgeschlossene M1-Kerze | Test-PnL=-0.0326 USD, Trades=24",
-      "equity": 5.13309134223,
-      "return_pct": -0.6517,
-      "pnl_usd": -0.032585,
+      "status": "ADA-Post-only-Order wird ueberwacht | Test-PnL=-0.0326 USD, Trades=24",
+      "equity": 5.13019757823,
+      "return_pct": -0.66748,
+      "pnl_usd": -0.033374,
       "completed_trades": 24,
       "fees": 0.0,
-      "position_value": 0.0,
-      "active_order": false,
+      "position_value": 5.11798,
+      "active_order": true,
       "target_allocation_pct": 20.0,
-      "actual_allocation_pct": 20.0,
+      "actual_allocation_pct": 19.996924568061246,
       "split_transition": false
     }
   },
   "performance_details": {
     "big4": {
-      "net_pnl_usd": -0.6688084675,
+      "net_pnl_usd": -0.6785432875,
       "fees_usd": 0.0786596095,
       "executions": 7,
       "note": "PnL als Portfolioerfolg abzueglich Scalping-PnL"
     },
     "scalping": {
       "realized_pnl_usd": -0.032585,
-      "unrealized_pnl_usd": 0.0,
-      "net_pnl_usd": -0.032585,
+      "unrealized_pnl_usd": -0.000789,
+      "net_pnl_usd": -0.033374,
       "fees_usd": 0.0,
       "completed_trades": 24,
       "win_rate_pct": 45.833333333333336,
       "average_win_usd": 0.013816909090909092,
       "average_loss_usd": -0.01419776923076923,
-      "maker_fills": 48,
+      "maker_fills": 49,
       "taker_fills": 0,
       "maker_share_pct": 100.0,
       "last_24h": {
@@ -24387,6 +24399,10 @@
       {
         "time": "2026-09-16T11:55:11.446000Z",
         "value": -0.6739198575
+      },
+      {
+        "time": "2026-09-16T12:00:13.691000Z",
+        "value": -0.6667591375
       }
     ],
     "scalping": [
@@ -29153,6 +29169,10 @@
       {
         "time": "2026-09-16T11:55:11.446000Z",
         "value": -0.032585
+      },
+      {
+        "time": "2026-09-16T12:00:13.691000Z",
+        "value": -0.0339
       }
     ]
   },
@@ -29493,11 +29513,18 @@
         "label": "Verkauf",
         "price": 0.19484,
         "quantity": 26.3
+      },
+      {
+        "time": "2026-09-16T11:58:00.265000Z",
+        "type": "buy",
+        "label": "Kauf",
+        "price": 0.19463,
+        "quantity": 26.3
       }
     ]
   },
   "operations": {
-    "last_successful_api_at": "2026-09-16T11:55:51.255000Z",
+    "last_successful_api_at": "2026-09-16T12:00:53.412000Z",
     "big4": {
       "level": "ok",
       "status": "Noch nicht faellig",
@@ -29507,42 +29534,29 @@
     },
     "scalping": {
       "level": "ok",
-      "status": "Warte auf naechste abgeschlossene M1-Kerze | Test-PnL=-0.0326 USD, Trades=24",
-      "active_order": null
+      "status": "ADA-Post-only-Order wird ueberwacht | Test-PnL=-0.0326 USD, Trades=24",
+      "active_order": {
+        "side": "SELL",
+        "type": "LIMIT",
+        "quantity": 26.3,
+        "price": 0.19502,
+        "age_seconds": 170,
+        "warning": false
+      }
     },
     "privacy": "Aggregierte Botdaten; keine API-Keys, Secrets, Signaturen oder Order-IDs exportiert"
   },
   "ada_activity": {
     "started_at": "2026-09-11T21:15:03.687000Z",
-    "data_at": "2026-09-16T11:55:51.133000Z",
-    "mode": "waiting",
+    "data_at": "2026-09-16T12:00:53.273000Z",
+    "mode": "position",
     "required_closes": 4,
     "signal": {
-      "falling_closes": 2,
-      "trend_ok": true,
-      "candle_at": "2026-09-16T11:54:00Z"
+      "falling_closes": 1,
+      "trend_ok": false,
+      "candle_at": "2026-09-16T11:59:00Z"
     },
     "candles": [
-      {
-        "time": "2026-09-16T07:55:00Z",
-        "value": 0.19415
-      },
-      {
-        "time": "2026-09-16T07:56:00Z",
-        "value": 0.19397
-      },
-      {
-        "time": "2026-09-16T07:57:00Z",
-        "value": 0.19404
-      },
-      {
-        "time": "2026-09-16T07:58:00Z",
-        "value": 0.19395
-      },
-      {
-        "time": "2026-09-16T07:59:00Z",
-        "value": 0.19389
-      },
       {
         "time": "2026-09-16T08:00:00Z",
         "value": 0.19395
@@ -30482,11 +30496,45 @@
       {
         "time": "2026-09-16T11:54:00Z",
         "value": 0.19482
+      },
+      {
+        "time": "2026-09-16T11:55:00Z",
+        "value": 0.19477
+      },
+      {
+        "time": "2026-09-16T11:56:00Z",
+        "value": 0.19473
+      },
+      {
+        "time": "2026-09-16T11:57:00Z",
+        "value": 0.19453
+      },
+      {
+        "time": "2026-09-16T11:58:00Z",
+        "value": 0.19455
+      },
+      {
+        "time": "2026-09-16T11:59:00Z",
+        "value": 0.19464
       }
     ],
-    "quote_at": "2026-09-16T11:55:51.130000Z",
-    "position": null,
-    "active_order": null,
+    "quote_at": "2026-09-16T12:00:53.270000Z",
+    "position": {
+      "quantity": 26.3,
+      "entry_price": 0.19463,
+      "unrealized_pnl_usd": -0.000789,
+      "opened_at": "2026-09-16T11:58:00.265000Z",
+      "target_price": 0.19501926,
+      "stop_price": 0.19424074
+    },
+    "active_order": {
+      "side": "SELL",
+      "type": "LIMIT",
+      "quantity": 26.3,
+      "price": 0.19502,
+      "age_seconds": 170,
+      "warning": false
+    },
     "timeline": [
       {
         "opened_at": "2026-09-16T11:38:03.959000Z",
@@ -30849,6 +30897,11 @@
         "time": "2026-09-16T11:42:24.922000Z",
         "side": "SELL",
         "price": 0.19484
+      },
+      {
+        "time": "2026-09-16T11:58:00.265000Z",
+        "side": "BUY",
+        "price": 0.19463
       }
     ],
     "note": "Nur neuer ADA-Test. Geb\u00fchren bereits im Nettoergebnis enthalten.",

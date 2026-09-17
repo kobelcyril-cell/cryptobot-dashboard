@@ -10,12 +10,12 @@ function renderAdaActivity(data){
   const date=t=>new Date(t).toLocaleString("de-CH",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"});
   const labels={waiting:"Wartet auf Einstieg",buy_pending:"Kauflimit wartet",position:"Position offen",paused:"Einstieg pausiert",error:"Bot meldet einen Fehler"};
   $("ada-mode").textContent=labels[a.mode]||"Status unbekannt";
-  $("ada-period").textContent=a.started_at?`Seit ${date(a.started_at)} · einschließlich der Anpassung vom 13.09. · Datenstand ${date(a.data_at)}`:"Test beginnt nach Schließen des Altbestands";
-  $("ada-stats-period").textContent=`ADA · ${a.started_at?`seit ${date(a.started_at)}`:"Test noch nicht gestartet"} · Gebühren bereits im Netto enthalten`;
+  $("ada-period").textContent=a.started_at?`Neue 6-Kerzen-Strategie seit ${date(a.started_at)} · Datenstand ${date(a.data_at)}`:"Strategie beginnt nach Schließen des Altbestands";
+  $("ada-stats-period").textContent=`ADA · ${a.started_at?`seit Strategiestart ${date(a.started_at)}`:"Strategie noch nicht gestartet"} · alte Strategiedaten ausgeblendet`;
   const steps=$("ada-steps");steps.replaceChildren();
   for(let i=0;i<a.required_closes;i++){const dot=document.createElement("i");dot.classList.toggle("on",i<(a.signal?.falling_closes||0));steps.append(dot)}
   $("ada-signal-text").textContent=a.signal?`${a.signal.falling_closes} von ${a.required_closes} fallenden Schlusskursen`:"Signalstatus nach Bot-Neustart verfügbar";
-  $("ada-trend").textContent=a.signal?`Trendfilter ${a.signal.trend_ok?"erfüllt":"nicht erfüllt"} · Kerze ${date(a.signal.candle_at)}`:"";
+  $("ada-trend").textContent=a.signal?`Kurs unter EMA40: ${a.signal.trend_ok?"ja":"nein"} · Kerze ${date(a.signal.candle_at)}`:"";
   const box=$("ada-position");box.hidden=!a.position&&!a.active_order;
   if(a.position){const p=a.position;box.textContent=`Einstieg ${price(p.entry_price)} · Offen ${amount(p.unrealized_pnl_usd)} · Haltedauer ${duration((new Date(a.data_at)-new Date(p.opened_at))/1000)} · Ziel ${p.target_price?price(p.target_price):"–"} · Stop-Schwelle ${p.stop_price?price(p.stop_price):"–"}`}
   else if(a.active_order){box.textContent=`Kauflimit ${price(a.active_order.price)} · ${a.active_order.quantity} ADA · offen seit ${duration(a.active_order.age_seconds)}`}
@@ -26,7 +26,7 @@ function renderAdaActivity(data){
     const reason=document.createElement("span");reason.className="ada-reason";reason.textContent=reasons[t.reason]||"Position geschlossen";
     const detail=document.createElement("small");detail.textContent=`${price(t.entry_price)} → ${price(t.exit_price)} · ${duration(t.hold_seconds)}`;
     const stamp=document.createElement("small");stamp.textContent=date(t.closed_at);card.append(gain,reason,detail,stamp);list.append(card)}
-  if(!a.timeline.length)list.textContent="Noch keine abgeschlossenen Trades im neuen Test.";
+  if(!a.timeline.length)list.textContent="Noch keine abgeschlossenen Trades der neuen Strategie.";
   const more=$("ada-more");more.hidden=a.timeline.length<=6;let expanded=false;
   const fold=()=>{[...list.children].forEach((card,i)=>card.hidden=!expanded&&i>=6);more.textContent=expanded?"Weniger anzeigen":`${a.timeline.length-6} weitere Trades anzeigen`;more.setAttribute("aria-expanded",String(expanded))};
   more.onclick=()=>{expanded=!expanded;fold()};fold();

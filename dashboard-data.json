@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-18T22:26:08.443000Z",
+  "generated_at": "2026-09-18T22:31:09.715000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-18T22:26:08.443000Z",
-    "status": "BIG4: Noch nicht faellig | SCALP: FEHLER (Big-4 laeuft weiter): [WinError 5] Zugriff verweigert: 'C:\\\\Users\\\\cyril\\\\OneDrive\\\\CryptoBot\\\\Python\\\\TradingBot\\\\cryptobot_v3\\\\state\\\\scalping_live_spot.tmp' -> 'C:\\\\Users\\\\cyril\\\\OneDrive\\\\CryptoBot\\\\Python\\\\TradingBot\\\\cryptobot_v3\\\\state\\\\scalping_live_spot.json'",
+    "last_cycle": "2026-09-18T22:31:09.715000Z",
+    "status": "BIG4: Noch nicht faellig | SCALP: Kein Signal: 6 fallende Schlusskurse + Kurs unter EMA40 | Strategie-PnL=-0.0578 USD, Trades=2",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
     "initial_capital": 26.64466057865,
-    "equity": 27.02325630715,
+    "equity": 27.02261948715,
     "cash": 11.78643948715,
-    "exposure": 15.23681682,
-    "return_total_pct": 1.4209065541760497,
-    "return_today_pct": 4.6904806297569195,
+    "exposure": 15.23618,
+    "return_total_pct": 1.4185165068413492,
+    "return_today_pct": 4.688013532856499,
     "max_drawdown_pct": -5.918009875744506
   },
   "recent_trades": [
@@ -67,33 +67,33 @@
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.60240349,
-      "allocation_pct": 25.914731677422225,
+      "value": 5.60238349,
+      "allocation_pct": 25.915249873647927,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 4.18251953,
-      "allocation_pct": 19.346852033952327,
-      "change_since_buy_pct": 4.329701325784399,
+      "value": 4.18461846,
+      "allocation_pct": 19.35701710001644,
+      "change_since_buy_pct": 4.382057504502285,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 2.2470784,
-      "allocation_pct": 10.394187762104805,
-      "change_since_buy_pct": 9.113680154142582,
+      "value": 2.24688,
+      "allocation_pct": 10.393514963771617,
+      "change_since_buy_pct": 9.104046242774567,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.2048154,
-      "allocation_pct": 14.824339466965199,
-      "change_since_buy_pct": -3.099916966509826,
+      "value": 3.20229805,
+      "allocation_pct": 14.813044177317732,
+      "change_since_buy_pct": -3.176030999169665,
       "average_buy_price": 1.4452
     }
   ],
@@ -15474,15 +15474,19 @@
     {
       "time": "2026-09-18T22:25:18.088000Z",
       "value": 27.02354479715
+    },
+    {
+      "time": "2026-09-18T22:30:19.906000Z",
+      "value": 27.02223859715
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
       "status": "Noch nicht faellig",
-      "equity": 21.61860504572,
-      "return_pct": 2.0187940525604184,
-      "pnl_usd": 0.4364353525,
+      "equity": 21.61809558972,
+      "return_pct": 2.0158846126515364,
+      "pnl_usd": 0.4357985325,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
@@ -15490,9 +15494,9 @@
     },
     "scalping": {
       "name": "ADA \u00b7 6-Kerzen-Reversion",
-      "status": "FEHLER (Big-4 laeuft weiter): [WinError 5] Zugriff verweigert: 'C:\\\\Users\\\\cyril\\\\OneDrive\\\\CryptoBot\\\\Python\\\\TradingBot\\\\cryptobot_v3\\\\state\\\\scalping_live_spot.tmp' -> 'C:\\\\Users\\\\cyril\\\\OneDrive\\\\CryptoBot\\\\Python\\\\TradingBot\\\\cryptobot_v3\\\\state\\\\scalping_live_spot.json'",
-      "equity": 5.40465126143,
-      "return_pct": -1.0701823522411027,
+      "status": "Kein Signal: 6 fallende Schlusskurse + Kurs unter EMA40 | Strategie-PnL=-0.0578 USD, Trades=2",
+      "equity": 5.40452389743,
+      "return_pct": -1.0702075723544184,
       "pnl_usd": -0.057839624,
       "completed_trades": 2,
       "fees": 0.004123624,
@@ -15505,7 +15509,7 @@
   },
   "performance_details": {
     "big4": {
-      "net_pnl_usd": 0.4364353525,
+      "net_pnl_usd": 0.4357985325,
       "fees_usd": 0.0854684095,
       "executions": 8,
       "note": "PnL als Portfolioerfolg abzueglich Scalping-PnL"
@@ -29857,6 +29861,10 @@
       {
         "time": "2026-09-18T22:25:18.088000Z",
         "value": 0.4367238425
+      },
+      {
+        "time": "2026-09-18T22:30:19.906000Z",
+        "value": 0.4354176425
       }
     ],
     "scalping": [
@@ -31511,6 +31519,10 @@
       {
         "time": "2026-09-18T22:25:18.088000Z",
         "value": 0.246202776
+      },
+      {
+        "time": "2026-09-18T22:30:19.906000Z",
+        "value": 0.246202776
       }
     ]
   },
@@ -31547,7 +31559,7 @@
     ]
   },
   "operations": {
-    "last_successful_api_at": "2026-09-18T22:26:08.643000Z",
+    "last_successful_api_at": "2026-09-18T22:31:09.921000Z",
     "big4": {
       "level": "ok",
       "status": "Noch nicht faellig",
@@ -31556,48 +31568,24 @@
       "split_rebalance_active": false
     },
     "scalping": {
-      "level": "error",
-      "status": "FEHLER (Big-4 laeuft weiter): [WinError 5] Zugriff verweigert: 'C:\\\\Users\\\\cyril\\\\OneDrive\\\\CryptoBot\\\\Python\\\\TradingBot\\\\cryptobot_v3\\\\state\\\\scalping_live_spot.tmp' -> 'C:\\\\Users\\\\cyril\\\\OneDrive\\\\CryptoBot\\\\Python\\\\TradingBot\\\\cryptobot_v3\\\\state\\\\scalping_live_spot.json'",
+      "level": "ok",
+      "status": "Kein Signal: 6 fallende Schlusskurse + Kurs unter EMA40 | Strategie-PnL=-0.0578 USD, Trades=2",
       "active_order": null
     },
     "privacy": "Aggregierte Botdaten; keine API-Keys, Secrets, Signaturen oder Order-IDs exportiert"
   },
   "ada_activity": {
     "started_at": "2026-09-17T11:38:06.025000Z",
-    "data_at": "2026-09-18T22:26:08.443000Z",
-    "mode": "error",
+    "data_at": "2026-09-18T22:31:09.715000Z",
+    "mode": "waiting",
     "required_closes": 6,
     "signal": {
       "falling_closes": 1,
       "trend_ok": false,
       "trend_rule": "below_ema40",
-      "candle_at": "2026-09-18T22:24:00Z"
+      "candle_at": "2026-09-18T22:30:00Z"
     },
     "candles": [
-      {
-        "time": "2026-09-18T18:25:00Z",
-        "value": 0.22136
-      },
-      {
-        "time": "2026-09-18T18:26:00Z",
-        "value": 0.22119
-      },
-      {
-        "time": "2026-09-18T18:27:00Z",
-        "value": 0.22133
-      },
-      {
-        "time": "2026-09-18T18:28:00Z",
-        "value": 0.22106
-      },
-      {
-        "time": "2026-09-18T18:29:00Z",
-        "value": 0.22123
-      },
-      {
-        "time": "2026-09-18T18:30:00Z",
-        "value": 0.22088
-      },
       {
         "time": "2026-09-18T18:31:00Z",
         "value": 0.22093
@@ -32533,9 +32521,33 @@
       {
         "time": "2026-09-18T22:24:00Z",
         "value": 0.22541
+      },
+      {
+        "time": "2026-09-18T22:25:00Z",
+        "value": 0.22557
+      },
+      {
+        "time": "2026-09-18T22:26:00Z",
+        "value": 0.22572
+      },
+      {
+        "time": "2026-09-18T22:27:00Z",
+        "value": 0.22576
+      },
+      {
+        "time": "2026-09-18T22:28:00Z",
+        "value": 0.22574
+      },
+      {
+        "time": "2026-09-18T22:29:00Z",
+        "value": 0.22577
+      },
+      {
+        "time": "2026-09-18T22:30:00Z",
+        "value": 0.22584
       }
     ],
-    "quote_at": "2026-09-18T22:25:58.342000Z",
+    "quote_at": "2026-09-18T22:31:09.707000Z",
     "position": null,
     "active_order": null,
     "timeline": [

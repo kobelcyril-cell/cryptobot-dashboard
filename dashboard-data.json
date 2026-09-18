@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-18T06:39:22.023000Z",
+  "generated_at": "2026-09-18T06:44:17.471000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-18T06:39:22.023000Z",
-    "status": "BIG4: Noch nicht faellig | SCALP: Post-only-Order zur Stornierung gesendet; warte auf Bestaetigung | Strategie-PnL=-0.0578 USD, Trades=2",
+    "last_cycle": "2026-09-18T06:44:17.471000Z",
+    "status": "BIG4: Noch nicht faellig | SCALP: Warte auf naechste abgeschlossene M1-Kerze | Strategie-PnL=-0.0578 USD, Trades=2",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
     "initial_capital": 26.64466057865,
-    "equity": 26.11062450715,
+    "equity": 26.10567988715,
     "cash": 10.43148828715,
-    "exposure": 15.67913622,
-    "return_total_pct": -2.0042892643485795,
-    "return_today_pct": 1.1548644666255898,
+    "exposure": 15.6741916,
+    "return_total_pct": -2.0228469036377135,
+    "return_today_pct": 1.1357085722193874,
     "max_drawdown_pct": -5.918009875744506
   },
   "recent_trades": [
@@ -67,33 +67,33 @@
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.34282564,
-      "allocation_pct": 25.577833453087976,
+      "value": 5.34099061,
+      "allocation_pct": 25.573891549119335,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 3.94883843,
-      "allocation_pct": 18.904366060445387,
-      "change_since_buy_pct": -1.4992922254975383,
+      "value": 3.94818649,
+      "allocation_pct": 18.904825056593413,
+      "change_since_buy_pct": -1.515554362468918,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 3.362304,
-      "allocation_pct": 16.096436141728837,
-      "change_since_buy_pct": 1.7341040462427746,
+      "value": 3.3600752,
+      "allocation_pct": 16.08881292560173,
+      "change_since_buy_pct": 1.6666666666666667,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.02516815,
-      "allocation_pct": 14.482457845711442,
-      "change_since_buy_pct": -8.531691115416551,
+      "value": 3.0249393,
+      "allocation_pct": 14.48410515008731,
+      "change_since_buy_pct": -8.538610572931082,
       "average_buy_price": 1.4452
     }
   ],
@@ -14722,15 +14722,19 @@
     {
       "time": "2026-09-18T06:38:40.761000Z",
       "value": 26.10518383715
+    },
+    {
+      "time": "2026-09-18T06:43:47.018000Z",
+      "value": 26.10567988715
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
       "status": "Noch nicht faellig",
-      "equity": 20.88849960572,
-      "return_pct": -2.279697911523478,
-      "pnl_usd": -0.4761964475,
+      "equity": 20.88454390972,
+      "return_pct": -2.303833697533982,
+      "pnl_usd": -0.4811410675,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
@@ -14738,14 +14742,14 @@
     },
     "scalping": {
       "name": "ADA \u00b7 6-Kerzen-Reversion",
-      "status": "Post-only-Order zur Stornierung gesendet; warte auf Bestaetigung | Strategie-PnL=-0.0578 USD, Trades=2",
-      "equity": 5.22212490143,
-      "return_pct": -1.1075879089786131,
+      "status": "Warte auf naechste abgeschlossene M1-Kerze | Strategie-PnL=-0.0578 USD, Trades=2",
+      "equity": 5.22113597743,
+      "return_pct": -1.1077976947934307,
       "pnl_usd": -0.057839624,
       "completed_trades": 2,
       "fees": 0.004123624,
       "position_value": 0.0,
-      "active_order": true,
+      "active_order": false,
       "target_allocation_pct": 20.0,
       "actual_allocation_pct": 20.0,
       "split_transition": false
@@ -14753,7 +14757,7 @@
   },
   "performance_details": {
     "big4": {
-      "net_pnl_usd": -0.4761964475,
+      "net_pnl_usd": -0.4811410675,
       "fees_usd": 0.0786596095,
       "executions": 7,
       "note": "PnL als Portfolioerfolg abzueglich Scalping-PnL"
@@ -28353,6 +28357,10 @@
       {
         "time": "2026-09-18T06:38:40.761000Z",
         "value": -0.4816371175
+      },
+      {
+        "time": "2026-09-18T06:43:47.018000Z",
+        "value": -0.4811410675
       }
     ],
     "scalping": [
@@ -29255,6 +29263,10 @@
       {
         "time": "2026-09-18T06:38:40.761000Z",
         "value": 0.246202776
+      },
+      {
+        "time": "2026-09-18T06:43:47.018000Z",
+        "value": 0.246202776
       }
     ]
   },
@@ -29291,7 +29303,7 @@
     ]
   },
   "operations": {
-    "last_successful_api_at": "2026-09-18T06:39:22.135000Z",
+    "last_successful_api_at": "2026-09-18T06:44:17.578000Z",
     "big4": {
       "level": "ok",
       "status": "Noch nicht faellig",
@@ -29301,50 +29313,23 @@
     },
     "scalping": {
       "level": "ok",
-      "status": "Post-only-Order zur Stornierung gesendet; warte auf Bestaetigung | Strategie-PnL=-0.0578 USD, Trades=2",
-      "active_order": {
-        "side": "BUY",
-        "type": "LIMIT",
-        "quantity": 24.5,
-        "price": 0.21293,
-        "age_seconds": 71,
-        "warning": false
-      }
+      "status": "Warte auf naechste abgeschlossene M1-Kerze | Strategie-PnL=-0.0578 USD, Trades=2",
+      "active_order": null
     },
     "privacy": "Aggregierte Botdaten; keine API-Keys, Secrets, Signaturen oder Order-IDs exportiert"
   },
   "ada_activity": {
     "started_at": "2026-09-17T11:38:06.025000Z",
-    "data_at": "2026-09-18T06:39:22.023000Z",
-    "mode": "buy_pending",
+    "data_at": "2026-09-18T06:44:17.471000Z",
+    "mode": "waiting",
     "required_closes": 6,
     "signal": {
       "falling_closes": 1,
       "trend_ok": false,
       "trend_rule": "below_ema40",
-      "candle_at": "2026-09-18T06:38:00Z"
+      "candle_at": "2026-09-18T06:43:00Z"
     },
     "candles": [
-      {
-        "time": "2026-09-18T02:39:00Z",
-        "value": 0.21696
-      },
-      {
-        "time": "2026-09-18T02:40:00Z",
-        "value": 0.21672
-      },
-      {
-        "time": "2026-09-18T02:41:00Z",
-        "value": 0.21662
-      },
-      {
-        "time": "2026-09-18T02:42:00Z",
-        "value": 0.21612
-      },
-      {
-        "time": "2026-09-18T02:43:00Z",
-        "value": 0.21562
-      },
       {
         "time": "2026-09-18T02:44:00Z",
         "value": 0.21493
@@ -30284,18 +30269,31 @@
       {
         "time": "2026-09-18T06:38:00Z",
         "value": 0.21323
+      },
+      {
+        "time": "2026-09-18T06:39:00Z",
+        "value": 0.21353
+      },
+      {
+        "time": "2026-09-18T06:40:00Z",
+        "value": 0.21344
+      },
+      {
+        "time": "2026-09-18T06:41:00Z",
+        "value": 0.21348
+      },
+      {
+        "time": "2026-09-18T06:42:00Z",
+        "value": 0.21352
+      },
+      {
+        "time": "2026-09-18T06:43:00Z",
+        "value": 0.21368
       }
     ],
-    "quote_at": "2026-09-18T06:39:22.023000Z",
+    "quote_at": "2026-09-18T06:44:17.463000Z",
     "position": null,
-    "active_order": {
-      "side": "BUY",
-      "type": "LIMIT",
-      "quantity": 24.5,
-      "price": 0.21293,
-      "age_seconds": 71,
-      "warning": false
-    },
+    "active_order": null,
     "timeline": [
       {
         "opened_at": "2026-09-18T04:26:17.051000Z",

@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-25T02:32:03.782000Z",
+  "generated_at": "2026-09-25T02:37:07.850000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-25T02:32:03.782000Z",
-    "status": "BIG4: FEHLER (Scalper laeuft weiter): Netzwerkfehler bei public/get-candlestick: <urlopen error [Errno 11001] getaddrinfo failed> | SCALP: FEHLER (Big-4 laeuft weiter): Netzwerkfehler bei public/get-candlestick: <urlopen error [Errno 11001] getaddrinfo failed>",
+    "last_cycle": "2026-09-25T02:37:07.850000Z",
+    "status": "BIG4: Noch nicht faellig | SCALP: Kein Signal: 6 fallende Schlusskurse + Kurs unter EMA40 | Strategie-PnL=-0.1238 USD, Trades=59",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
-    "initial_capital": 26.31848417855,
-    "equity": 27.74443441075,
+    "initial_capital": 26.29666571855,
+    "equity": 27.67887676075,
     "cash": 11.72048008075,
-    "exposure": 16.02395433,
-    "return_total_pct": 5.418056080000888,
-    "return_today_pct": 0.4545795901095172,
+    "exposure": 15.95839668,
+    "return_total_pct": 5.256221670814224,
+    "return_today_pct": 0.21721428389466546,
     "max_drawdown_pct": -5.420422939181499
   },
   "recent_trades": [
@@ -133,42 +133,38 @@
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.84747285,
-      "allocation_pct": 26.345251643219246,
+      "value": 5.83062661,
+      "allocation_pct": 26.33157163673326,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 4.28826118,
-      "allocation_pct": 19.320366728842238,
-      "change_since_buy_pct": 6.967344660876161,
+      "value": 4.27223297,
+      "allocation_pct": 19.293742512242382,
+      "change_since_buy_pct": 6.567533410721174,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 2.34608,
-      "allocation_pct": 10.57004787548929,
-      "change_since_buy_pct": 13.921001926782274,
+      "value": 2.3353664,
+      "allocation_pct": 10.546699655600113,
+      "change_since_buy_pct": 13.400770712909441,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.5421403,
-      "allocation_pct": 15.958787659713224,
-      "change_since_buy_pct": 7.099363409908663,
+      "value": 3.5201707,
+      "allocation_pct": 15.897369727227218,
+      "change_since_buy_pct": 6.4350954885137,
       "average_buy_price": 1.4452
     }
   ],
   "unmanaged_assets": {},
   "equity_history": [
-    {
-      "time": "2026-09-10T10:06:45.890000Z",
-      "value": 26.31848417855
-    },
     {
       "time": "2026-09-10T10:11:50.047000Z",
       "value": 26.29666571855
@@ -16164,15 +16160,19 @@
     {
       "time": "2026-09-25T02:30:16.203000Z",
       "value": 27.74443441075
+    },
+    {
+      "time": "2026-09-25T02:35:21.442000Z",
+      "value": 27.74443441075
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
-      "status": "FEHLER (Scalper laeuft weiter): Netzwerkfehler bei public/get-candlestick: <urlopen error [Errno 11001] getaddrinfo failed>",
-      "equity": 22.1955475286,
-      "return_pct": 6.9819538356451485,
-      "pnl_usd": 1.5497412626,
+      "status": "Noch nicht faellig",
+      "equity": 22.1431014086,
+      "return_pct": 6.800081331783116,
+      "pnl_usd": 1.5060020726,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
@@ -16180,9 +16180,9 @@
     },
     "scalping": {
       "name": "ADA \u00b7 6-Kerzen-Reversion",
-      "status": "FEHLER (Big-4 laeuft weiter): Netzwerkfehler bei public/get-candlestick: <urlopen error [Errno 11001] getaddrinfo failed>",
-      "equity": 5.54888688215,
-      "return_pct": -2.23091645277936,
+      "status": "Kein Signal: 6 fallende Schlusskurse + Kurs unter EMA40 | Strategie-PnL=-0.1238 USD, Trades=59",
+      "equity": 5.53577535215,
+      "return_pct": -2.2362003969673676,
       "pnl_usd": -0.1237910304,
       "completed_trades": 59,
       "fees": 0.1005170304,
@@ -16195,7 +16195,7 @@
   },
   "performance_details": {
     "big4": {
-      "net_pnl_usd": 1.5497412626,
+      "net_pnl_usd": 1.5060020726,
       "fees_usd": 0.0854684095,
       "executions": 8,
       "note": "PnL als Portfolioerfolg abzueglich Scalping-PnL"
@@ -16228,10 +16228,6 @@
   },
   "strategy_history": {
     "big4": [
-      {
-        "time": "2026-09-10T10:06:45.890000Z",
-        "value": -0.1981980225
-      },
       {
         "time": "2026-09-10T10:11:50.047000Z",
         "value": -0.2111604825
@@ -32227,6 +32223,10 @@
       {
         "time": "2026-09-25T02:30:16.203000Z",
         "value": 1.5497412626
+      },
+      {
+        "time": "2026-09-25T02:35:21.442000Z",
+        "value": 1.5715597226
       }
     ],
     "scalping": [
@@ -40929,6 +40929,10 @@
       {
         "time": "2026-09-25T02:30:16.203000Z",
         "value": 0.1802513696
+      },
+      {
+        "time": "2026-09-25T02:35:21.442000Z",
+        "value": 0.1802513696
       }
     ]
   },
@@ -41763,89 +41767,33 @@
     ]
   },
   "operations": {
-    "last_successful_api_at": "2026-09-25T02:32:04.126000Z",
+    "last_successful_api_at": "2026-09-25T02:37:08.395000Z",
     "big4": {
-      "level": "error",
-      "status": "FEHLER (Scalper laeuft weiter): Netzwerkfehler bei public/get-candlestick: <urlopen error [Errno 11001] getaddrinfo failed>",
+      "level": "ok",
+      "status": "Noch nicht faellig",
       "next_rebalance_at": "2026-09-25T21:17:34.421000Z",
       "rebalance_due": false,
       "split_rebalance_active": false
     },
     "scalping": {
-      "level": "error",
-      "status": "FEHLER (Big-4 laeuft weiter): Netzwerkfehler bei public/get-candlestick: <urlopen error [Errno 11001] getaddrinfo failed>",
+      "level": "ok",
+      "status": "Kein Signal: 6 fallende Schlusskurse + Kurs unter EMA40 | Strategie-PnL=-0.1238 USD, Trades=59",
       "active_order": null
     },
     "privacy": "Aggregierte Botdaten; keine API-Keys, Secrets, Signaturen oder Order-IDs exportiert"
   },
   "ada_activity": {
     "started_at": "2026-09-17T11:38:06.025000Z",
-    "data_at": "2026-09-25T02:32:03.782000Z",
-    "mode": "error",
+    "data_at": "2026-09-25T02:37:07.850000Z",
+    "mode": "waiting",
     "required_closes": 6,
     "signal": {
-      "falling_closes": 2,
+      "falling_closes": 4,
       "trend_ok": true,
       "trend_rule": "below_ema40",
-      "candle_at": "2026-09-25T02:22:00Z"
+      "candle_at": "2026-09-25T02:36:00Z"
     },
     "candles": [
-      {
-        "time": "2026-09-24T22:23:00Z",
-        "value": 0.24652
-      },
-      {
-        "time": "2026-09-24T22:24:00Z",
-        "value": 0.24679
-      },
-      {
-        "time": "2026-09-24T22:25:00Z",
-        "value": 0.24707
-      },
-      {
-        "time": "2026-09-24T22:26:00Z",
-        "value": 0.24693
-      },
-      {
-        "time": "2026-09-24T22:27:00Z",
-        "value": 0.24711
-      },
-      {
-        "time": "2026-09-24T22:28:00Z",
-        "value": 0.24676
-      },
-      {
-        "time": "2026-09-24T22:29:00Z",
-        "value": 0.24706
-      },
-      {
-        "time": "2026-09-24T22:30:00Z",
-        "value": 0.24718
-      },
-      {
-        "time": "2026-09-24T22:31:00Z",
-        "value": 0.24751
-      },
-      {
-        "time": "2026-09-24T22:32:00Z",
-        "value": 0.24752
-      },
-      {
-        "time": "2026-09-24T22:33:00Z",
-        "value": 0.24801
-      },
-      {
-        "time": "2026-09-24T22:34:00Z",
-        "value": 0.24802
-      },
-      {
-        "time": "2026-09-24T22:35:00Z",
-        "value": 0.24774
-      },
-      {
-        "time": "2026-09-24T22:36:00Z",
-        "value": 0.24765
-      },
       {
         "time": "2026-09-24T22:37:00Z",
         "value": 0.24756
@@ -42749,9 +42697,65 @@
       {
         "time": "2026-09-25T02:22:00Z",
         "value": 0.2505
+      },
+      {
+        "time": "2026-09-25T02:23:00Z",
+        "value": 0.2505
+      },
+      {
+        "time": "2026-09-25T02:24:00Z",
+        "value": 0.25027
+      },
+      {
+        "time": "2026-09-25T02:25:00Z",
+        "value": 0.25024
+      },
+      {
+        "time": "2026-09-25T02:26:00Z",
+        "value": 0.25031
+      },
+      {
+        "time": "2026-09-25T02:27:00Z",
+        "value": 0.25032
+      },
+      {
+        "time": "2026-09-25T02:28:00Z",
+        "value": 0.2497
+      },
+      {
+        "time": "2026-09-25T02:29:00Z",
+        "value": 0.24959
+      },
+      {
+        "time": "2026-09-25T02:30:00Z",
+        "value": 0.24956
+      },
+      {
+        "time": "2026-09-25T02:31:00Z",
+        "value": 0.24969
+      },
+      {
+        "time": "2026-09-25T02:32:00Z",
+        "value": 0.24978
+      },
+      {
+        "time": "2026-09-25T02:33:00Z",
+        "value": 0.2498
+      },
+      {
+        "time": "2026-09-25T02:34:00Z",
+        "value": 0.24931
+      },
+      {
+        "time": "2026-09-25T02:35:00Z",
+        "value": 0.24928
+      },
+      {
+        "time": "2026-09-25T02:36:00Z",
+        "value": 0.24828
       }
     ],
-    "quote_at": "2026-09-25T02:23:27.242000Z",
+    "quote_at": "2026-09-25T02:37:07.837000Z",
     "position": null,
     "active_order": null,
     "timeline": [

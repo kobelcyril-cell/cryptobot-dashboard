@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-25T02:21:56.842000Z",
+  "generated_at": "2026-09-25T02:27:02.781000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-25T02:21:56.842000Z",
-    "status": "BIG4: Noch nicht faellig | SCALP: Warte auf naechste abgeschlossene M1-Kerze | Strategie-PnL=-0.1238 USD, Trades=59",
+    "last_cycle": "2026-09-25T02:27:02.781000Z",
+    "status": "BIG4: FEHLER (Scalper laeuft weiter): Netzwerkfehler bei public/get-candlestick: <urlopen error [Errno 11001] getaddrinfo failed> | SCALP: FEHLER (Big-4 laeuft weiter): Netzwerkfehler bei public/get-candlestick: <urlopen error [Errno 11001] getaddrinfo failed>",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
-    "initial_capital": 26.30463750855,
-    "equity": 27.75109171075,
+    "initial_capital": 26.28830866855,
+    "equity": 27.74443441075,
     "cash": 11.72048008075,
-    "exposure": 16.03061163,
-    "return_total_pct": 5.498856244378383,
-    "return_today_pct": 0.4786837496250601,
+    "exposure": 16.02395433,
+    "return_total_pct": 5.5390621000355,
+    "return_today_pct": 0.4545795901095172,
     "max_drawdown_pct": -5.420422939181499
   },
   "recent_trades": [
@@ -133,42 +133,38 @@
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.85034986,
-      "allocation_pct": 26.35189058946885,
+      "value": 5.84747285,
+      "allocation_pct": 26.345251643219246,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 4.28967637,
-      "allocation_pct": 19.322106381936944,
-      "change_since_buy_pct": 7.002645476320108,
+      "value": 4.28826118,
+      "allocation_pct": 19.320366728842238,
+      "change_since_buy_pct": 6.967344660876161,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 2.347072,
-      "allocation_pct": 10.571980484874086,
-      "change_since_buy_pct": 13.96917148362235,
+      "value": 2.34608,
+      "allocation_pct": 10.57004787548929,
+      "change_since_buy_pct": 13.921001926782274,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.5435134,
-      "allocation_pct": 15.961144145850582,
-      "change_since_buy_pct": 7.140880154995848,
+      "value": 3.5421403,
+      "allocation_pct": 15.958787659713224,
+      "change_since_buy_pct": 7.099363409908663,
       "average_buy_price": 1.4452
     }
   ],
   "unmanaged_assets": {},
   "equity_history": [
-    {
-      "time": "2026-09-10T09:56:35.065000Z",
-      "value": 26.30463750855
-    },
     {
       "time": "2026-09-10T10:01:43.379000Z",
       "value": 26.28830866855
@@ -16164,15 +16160,19 @@
     {
       "time": "2026-09-25T02:20:04.068000Z",
       "value": 27.75554683075
+    },
+    {
+      "time": "2026-09-25T02:25:08.505000Z",
+      "value": 27.74443441075
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
-      "status": "Noch nicht faellig",
-      "equity": 22.2008733686,
-      "return_pct": 7.0728501863062,
-      "pnl_usd": 1.5702452326,
+      "status": "FEHLER (Scalper laeuft weiter): Netzwerkfehler bei public/get-candlestick: <urlopen error [Errno 11001] getaddrinfo failed>",
+      "equity": 22.1955475286,
+      "return_pct": 7.117901701828685,
+      "pnl_usd": 1.5799167726,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
@@ -16180,9 +16180,9 @@
     },
     "scalping": {
       "name": "ADA \u00b7 6-Kerzen-Reversion",
-      "status": "Warte auf naechste abgeschlossene M1-Kerze | Strategie-PnL=-0.1238 USD, Trades=59",
-      "equity": 5.55021834215,
-      "return_pct": -2.230381270947384,
+      "status": "FEHLER (Big-4 laeuft weiter): Netzwerkfehler bei public/get-candlestick: <urlopen error [Errno 11001] getaddrinfo failed>",
+      "equity": 5.54888688215,
+      "return_pct": -2.23091645277936,
       "pnl_usd": -0.1237910304,
       "completed_trades": 59,
       "fees": 0.1005170304,
@@ -16195,7 +16195,7 @@
   },
   "performance_details": {
     "big4": {
-      "net_pnl_usd": 1.5702452326,
+      "net_pnl_usd": 1.5799167726,
       "fees_usd": 0.0854684095,
       "executions": 8,
       "note": "PnL als Portfolioerfolg abzueglich Scalping-PnL"
@@ -16228,10 +16228,6 @@
   },
   "strategy_history": {
     "big4": [
-      {
-        "time": "2026-09-10T09:56:35.065000Z",
-        "value": -0.2034346925
-      },
       {
         "time": "2026-09-10T10:01:43.379000Z",
         "value": -0.2141055325
@@ -32227,6 +32223,10 @@
       {
         "time": "2026-09-25T02:20:04.068000Z",
         "value": 1.5747003526
+      },
+      {
+        "time": "2026-09-25T02:25:08.505000Z",
+        "value": 1.5799167726
       }
     ],
     "scalping": [
@@ -40921,6 +40921,10 @@
       {
         "time": "2026-09-25T02:20:04.068000Z",
         "value": 0.1802513696
+      },
+      {
+        "time": "2026-09-25T02:25:08.505000Z",
+        "value": 0.1802513696
       }
     ]
   },
@@ -41755,41 +41759,33 @@
     ]
   },
   "operations": {
-    "last_successful_api_at": "2026-09-25T02:21:57.416000Z",
+    "last_successful_api_at": "2026-09-25T02:27:03.191000Z",
     "big4": {
-      "level": "ok",
-      "status": "Noch nicht faellig",
+      "level": "error",
+      "status": "FEHLER (Scalper laeuft weiter): Netzwerkfehler bei public/get-candlestick: <urlopen error [Errno 11001] getaddrinfo failed>",
       "next_rebalance_at": "2026-09-25T21:17:34.421000Z",
       "rebalance_due": false,
       "split_rebalance_active": false
     },
     "scalping": {
-      "level": "ok",
-      "status": "Warte auf naechste abgeschlossene M1-Kerze | Strategie-PnL=-0.1238 USD, Trades=59",
+      "level": "error",
+      "status": "FEHLER (Big-4 laeuft weiter): Netzwerkfehler bei public/get-candlestick: <urlopen error [Errno 11001] getaddrinfo failed>",
       "active_order": null
     },
     "privacy": "Aggregierte Botdaten; keine API-Keys, Secrets, Signaturen oder Order-IDs exportiert"
   },
   "ada_activity": {
     "started_at": "2026-09-17T11:38:06.025000Z",
-    "data_at": "2026-09-25T02:21:56.842000Z",
-    "mode": "waiting",
+    "data_at": "2026-09-25T02:27:02.781000Z",
+    "mode": "error",
     "required_closes": 6,
     "signal": {
-      "falling_closes": 4,
+      "falling_closes": 2,
       "trend_ok": true,
       "trend_rule": "below_ema40",
-      "candle_at": "2026-09-25T02:20:00Z"
+      "candle_at": "2026-09-25T02:22:00Z"
     },
     "candles": [
-      {
-        "time": "2026-09-24T22:21:00Z",
-        "value": 0.24635
-      },
-      {
-        "time": "2026-09-24T22:22:00Z",
-        "value": 0.24647
-      },
       {
         "time": "2026-09-24T22:23:00Z",
         "value": 0.24652
@@ -42741,9 +42737,17 @@
       {
         "time": "2026-09-25T02:20:00Z",
         "value": 0.25059
+      },
+      {
+        "time": "2026-09-25T02:21:00Z",
+        "value": 0.25064
+      },
+      {
+        "time": "2026-09-25T02:22:00Z",
+        "value": 0.2505
       }
     ],
-    "quote_at": "2026-09-25T02:21:56.837000Z",
+    "quote_at": "2026-09-25T02:23:27.242000Z",
     "position": null,
     "active_order": null,
     "timeline": [

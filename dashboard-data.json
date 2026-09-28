@@ -1,20 +1,20 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-28T12:39:04.485000Z",
+  "generated_at": "2026-09-28T13:09:57.187000Z",
   "bot": {
     "mode": "LIVE BIG-4 + SCALPING",
-    "last_cycle": "2026-09-28T12:39:04.485000Z",
+    "last_cycle": "2026-09-28T13:09:57.187000Z",
     "status": "BIG4: Noch nicht faellig | SCALP: Kein Signal: 6 fallende Schlusskurse + Kurs unter EMA40 | Strategie-PnL=-0.1032 USD, Trades=61",
     "regime": "normal"
   },
   "portfolio": {
     "currency": "USD",
     "initial_capital": 27.77404246315,
-    "equity": 27.77404246315,
+    "equity": 27.79553657315,
     "cash": 11.94820369315,
-    "exposure": 15.82583877,
-    "return_total_pct": 0.0,
-    "return_today_pct": 0.0,
+    "exposure": 15.84733288,
+    "return_total_pct": 0.07738920262874201,
+    "return_today_pct": 0.07738920262874201,
     "max_drawdown_pct": 0.0
   },
   "recent_trades": [
@@ -133,33 +133,33 @@
     {
       "symbol": "BTC",
       "name": "BTC",
-      "value": 5.74399768,
-      "allocation_pct": 25.85146584090618,
+      "value": 5.74522793,
+      "allocation_pct": 25.837007656248076,
       "change_since_buy_pct": null,
       "average_buy_price": null
     },
     {
       "symbol": "ETH",
       "name": "ETH",
-      "value": 4.2567295,
-      "allocation_pct": 19.157858932705498,
-      "change_since_buy_pct": 6.180811392327333,
+      "value": 4.26568176,
+      "allocation_pct": 19.183303714851533,
+      "change_since_buy_pct": 6.404118565262581,
       "average_buy_price": 2521.19
     },
     {
       "symbol": "SOL",
       "name": "SOL",
-      "value": 2.3714752,
-      "allocation_pct": 10.6730736223689,
-      "change_since_buy_pct": 15.154142581888246,
+      "value": 2.37068159,
+      "allocation_pct": 10.661251239749571,
+      "change_since_buy_pct": 15.115606450835974,
       "average_buy_price": 103.8
     },
     {
       "symbol": "XRP",
       "name": "XRP",
-      "value": 3.45363639,
-      "allocation_pct": 15.543453903866398,
-      "change_since_buy_pct": 4.629116774267665,
+      "value": 3.4657416,
+      "allocation_pct": 15.58587289221395,
+      "change_since_buy_pct": 4.9958483254912815,
       "average_buy_price": 1.4452
     }
   ],
@@ -168,24 +168,31 @@
     {
       "time": "2026-09-28T12:39:04.502000Z",
       "value": 27.77404246315
+    },
+    {
+      "time": "2026-09-28T13:09:57.200000Z",
+      "value": 27.79553657315
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
       "status": "Noch nicht faellig",
-      "equity": 22.21923397052,
-      "return_pct": 0.0,
-      "pnl_usd": 0.0,
+      "equity": 22.23642925852,
+      "return_pct": 0.09666173488357058,
+      "pnl_usd": 0.02149411,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
-      "actual_allocation_pct": 80.0
+      "actual_allocation_pct": 80.0,
+      "protected_cash_target_usd": 0.0,
+      "protected_cash_actual_usd": 0.0,
+      "protected_cash_pct_of_big4": 0.0
     },
     "scalping": {
       "name": "ADA \u00b7 6-Kerzen-Reversion",
       "status": "Kein Signal: 6 fallende Schlusskurse + Kurs unter EMA40 | Strategie-PnL=-0.1032 USD, Trades=61",
-      "equity": 5.55480849263,
+      "equity": 5.55910731463,
       "return_pct": 0.0,
       "pnl_usd": 0.0,
       "completed_trades": 0,
@@ -200,8 +207,8 @@
   "performance_details": {
     "big4": {
       "realized_pnl_usd": 0.0,
-      "unrealized_pnl_usd": 0.0,
-      "net_pnl_usd": 0.0,
+      "unrealized_pnl_usd": 0.02149411,
+      "net_pnl_usd": 0.02149411,
       "fees_usd": 0.0,
       "executions": 0,
       "note": "Netto aus Portfolio-PnL abzueglich Scalping-PnL; Realisiert aus BIG-4-Fills, offen als Differenz"
@@ -237,11 +244,19 @@
       {
         "time": "2026-09-28T12:39:04.502000Z",
         "value": 0.0
+      },
+      {
+        "time": "2026-09-28T13:09:57.200000Z",
+        "value": 0.02149411
       }
     ],
     "scalping": [
       {
         "time": "2026-09-28T12:39:04.502000Z",
+        "value": 0.0
+      },
+      {
+        "time": "2026-09-28T13:09:57.200000Z",
         "value": 0.0
       }
     ]
@@ -250,11 +265,11 @@
     "scalping": []
   },
   "operations": {
-    "last_successful_api_at": "2026-09-28T12:39:04.502000Z",
+    "last_successful_api_at": "2026-09-28T13:09:57.200000Z",
     "big4": {
       "level": "ok",
       "status": "Noch nicht faellig",
-      "next_rebalance_at": "2026-09-28T12:45:00Z",
+      "next_rebalance_at": "2026-09-28T13:15:00Z",
       "rebalance_due": false,
       "last_rebalance": {
         "started_at": 1790371071547,
@@ -284,140 +299,16 @@
   },
   "ada_activity": {
     "started_at": "2026-09-17T11:38:06.025000Z",
-    "data_at": "2026-09-28T12:39:04.485000Z",
+    "data_at": "2026-09-28T13:09:57.187000Z",
     "mode": "waiting",
     "required_closes": 6,
     "signal": {
-      "falling_closes": 3,
-      "trend_ok": false,
+      "falling_closes": 2,
+      "trend_ok": true,
       "trend_rule": "below_ema40",
-      "candle_at": "2026-09-28T12:37:00Z"
+      "candle_at": "2026-09-28T13:08:00Z"
     },
     "candles": [
-      {
-        "time": "2026-09-28T08:38:00Z",
-        "value": 0.24421
-      },
-      {
-        "time": "2026-09-28T08:39:00Z",
-        "value": 0.24386
-      },
-      {
-        "time": "2026-09-28T08:40:00Z",
-        "value": 0.24378
-      },
-      {
-        "time": "2026-09-28T08:41:00Z",
-        "value": 0.24372
-      },
-      {
-        "time": "2026-09-28T08:42:00Z",
-        "value": 0.24344
-      },
-      {
-        "time": "2026-09-28T08:43:00Z",
-        "value": 0.24371
-      },
-      {
-        "time": "2026-09-28T08:44:00Z",
-        "value": 0.24381
-      },
-      {
-        "time": "2026-09-28T08:45:00Z",
-        "value": 0.24391
-      },
-      {
-        "time": "2026-09-28T08:46:00Z",
-        "value": 0.24389
-      },
-      {
-        "time": "2026-09-28T08:47:00Z",
-        "value": 0.24421
-      },
-      {
-        "time": "2026-09-28T08:48:00Z",
-        "value": 0.24405
-      },
-      {
-        "time": "2026-09-28T08:49:00Z",
-        "value": 0.24382
-      },
-      {
-        "time": "2026-09-28T08:50:00Z",
-        "value": 0.244
-      },
-      {
-        "time": "2026-09-28T08:51:00Z",
-        "value": 0.24487
-      },
-      {
-        "time": "2026-09-28T08:52:00Z",
-        "value": 0.2453
-      },
-      {
-        "time": "2026-09-28T08:53:00Z",
-        "value": 0.2455
-      },
-      {
-        "time": "2026-09-28T08:54:00Z",
-        "value": 0.24508
-      },
-      {
-        "time": "2026-09-28T08:55:00Z",
-        "value": 0.245
-      },
-      {
-        "time": "2026-09-28T08:56:00Z",
-        "value": 0.24511
-      },
-      {
-        "time": "2026-09-28T08:57:00Z",
-        "value": 0.24517
-      },
-      {
-        "time": "2026-09-28T08:58:00Z",
-        "value": 0.24475
-      },
-      {
-        "time": "2026-09-28T08:59:00Z",
-        "value": 0.24491
-      },
-      {
-        "time": "2026-09-28T09:00:00Z",
-        "value": 0.24512
-      },
-      {
-        "time": "2026-09-28T09:01:00Z",
-        "value": 0.24429
-      },
-      {
-        "time": "2026-09-28T09:02:00Z",
-        "value": 0.2436
-      },
-      {
-        "time": "2026-09-28T09:03:00Z",
-        "value": 0.24273
-      },
-      {
-        "time": "2026-09-28T09:04:00Z",
-        "value": 0.24293
-      },
-      {
-        "time": "2026-09-28T09:05:00Z",
-        "value": 0.24265
-      },
-      {
-        "time": "2026-09-28T09:06:00Z",
-        "value": 0.24233
-      },
-      {
-        "time": "2026-09-28T09:07:00Z",
-        "value": 0.24266
-      },
-      {
-        "time": "2026-09-28T09:08:00Z",
-        "value": 0.24259
-      },
       {
         "time": "2026-09-28T09:09:00Z",
         "value": 0.24213
@@ -1253,9 +1144,133 @@
       {
         "time": "2026-09-28T12:37:00Z",
         "value": 0.25259
+      },
+      {
+        "time": "2026-09-28T12:38:00Z",
+        "value": 0.25183
+      },
+      {
+        "time": "2026-09-28T12:39:00Z",
+        "value": 0.25165
+      },
+      {
+        "time": "2026-09-28T12:40:00Z",
+        "value": 0.25076
+      },
+      {
+        "time": "2026-09-28T12:41:00Z",
+        "value": 0.25115
+      },
+      {
+        "time": "2026-09-28T12:42:00Z",
+        "value": 0.251
+      },
+      {
+        "time": "2026-09-28T12:43:00Z",
+        "value": 0.25132
+      },
+      {
+        "time": "2026-09-28T12:44:00Z",
+        "value": 0.2516
+      },
+      {
+        "time": "2026-09-28T12:45:00Z",
+        "value": 0.25224
+      },
+      {
+        "time": "2026-09-28T12:46:00Z",
+        "value": 0.25259
+      },
+      {
+        "time": "2026-09-28T12:47:00Z",
+        "value": 0.2517
+      },
+      {
+        "time": "2026-09-28T12:48:00Z",
+        "value": 0.25182
+      },
+      {
+        "time": "2026-09-28T12:49:00Z",
+        "value": 0.2519
+      },
+      {
+        "time": "2026-09-28T12:50:00Z",
+        "value": 0.2517
+      },
+      {
+        "time": "2026-09-28T12:51:00Z",
+        "value": 0.25146
+      },
+      {
+        "time": "2026-09-28T12:52:00Z",
+        "value": 0.25229
+      },
+      {
+        "time": "2026-09-28T12:53:00Z",
+        "value": 0.25238
+      },
+      {
+        "time": "2026-09-28T12:54:00Z",
+        "value": 0.25261
+      },
+      {
+        "time": "2026-09-28T12:55:00Z",
+        "value": 0.25222
+      },
+      {
+        "time": "2026-09-28T12:56:00Z",
+        "value": 0.25233
+      },
+      {
+        "time": "2026-09-28T12:57:00Z",
+        "value": 0.25288
+      },
+      {
+        "time": "2026-09-28T12:58:00Z",
+        "value": 0.25284
+      },
+      {
+        "time": "2026-09-28T12:59:00Z",
+        "value": 0.25221
+      },
+      {
+        "time": "2026-09-28T13:00:00Z",
+        "value": 0.25127
+      },
+      {
+        "time": "2026-09-28T13:01:00Z",
+        "value": 0.25099
+      },
+      {
+        "time": "2026-09-28T13:02:00Z",
+        "value": 0.25063
+      },
+      {
+        "time": "2026-09-28T13:03:00Z",
+        "value": 0.25063
+      },
+      {
+        "time": "2026-09-28T13:04:00Z",
+        "value": 0.25064
+      },
+      {
+        "time": "2026-09-28T13:05:00Z",
+        "value": 0.25076
+      },
+      {
+        "time": "2026-09-28T13:06:00Z",
+        "value": 0.25016
+      },
+      {
+        "time": "2026-09-28T13:07:00Z",
+        "value": 0.25076
+      },
+      {
+        "time": "2026-09-28T13:08:00Z",
+        "value": 0.25002
       }
     ],
-    "quote_at": "2026-09-28T12:38:58.923000Z",
+    "quote_at": "2026-09-28T13:09:51.530000Z",
     "position": null,
     "active_order": null,
     "timeline": [],

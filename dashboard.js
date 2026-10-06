@@ -33,7 +33,7 @@ function renderAdaActivity(data){
   $("ada-target-value").textContent=Number.isFinite(weight)?`${(weight*100).toFixed(0)} % ADA`:"–";
   $("ada-next-check").textContent=`Nächste Prüfung ${date(a.next_evaluation_at)}`;$("ada-check-interval").textContent=`Alle ${Number(a.evaluation_interval_hours||6)} Stunden`;$("ada-normal-target").textContent=`${(Number(a.normal_target_weight)*100).toFixed(0)} % ADA`;$("ada-weak-target").textContent=`${(Number(a.weak_target_weight)*100).toFixed(0)} % ADA`;
   $("ada-signal-text").textContent=normal?"ADA liegt im normalen Regime":"ADA liegt im schwachen Regime";$("ada-signal-dot").classList.toggle("weak",!normal);
-  $("ada-trend").textContent=`Letzte Regimebewertung ${date(a.signal?.candle_at)}`;
+  $("ada-trend").textContent=`Letzte Bewertung ${date(a.last_evaluation_at)} · H4-Datenbasis ${date(a.signal?.candle_at)}`;
   const box=$("ada-position");box.hidden=!a.position&&!a.active_order;
   if(a.position){const p=a.position;box.textContent=`Bestand ${Number(p.quantity).toLocaleString("de-CH",{maximumFractionDigits:4})} ADA · Wert ${money.format(Number(p.value_usd||0))} USD · Ø Einstieg ${price(p.entry_price)} · Offen ${amount(p.unrealized_pnl_usd)}`}
   else if(a.active_order){box.textContent=`${a.active_order.side} ${a.active_order.type} · ${Number(a.active_order.quantity).toLocaleString("de-CH",{maximumFractionDigits:4})} ADA · Limit ${price(a.active_order.price)} · offen seit ${duration(a.active_order.age_seconds)}`}

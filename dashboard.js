@@ -1,37 +1,47 @@
 "use strict";
 const $=id=>document.getElementById(id);
 const money=new Intl.NumberFormat("de-CH",{minimumFractionDigits:2,maximumFractionDigits:2});
-const hasNewAdaData=data=>Number(data?.ada_activity?.required_closes)===6;
+const hasNewAdaData=data=>data?.ada_activity?.strategy==="ada_regime_rebalance_v4";
 function renderAdaActivity(data){
-  const a=data.ada_activity;if(!a||Number(a.required_closes)!==6){$("ada-mode").textContent="Neue Strategie wartet auf Bot-Neustart";
+  const a=data.ada_activity;
+  if(!hasNewAdaData(data)){
+    $("ada-mode").textContent="Warte auf ADA V4";
     for(const id of ["scalp-return","scalp-realized","scalp-unrealized","scalp-fees","scalp-net","stat-trades","stat-winrate","stat-avg-win","stat-avg-loss","stat-maker","stat-maker-taker","period-24h","period-7d","period-all"])$(id).textContent="–";
-    $("scalp-detail").textContent="Alte ADA-Strategiedaten sind ausgeblendet";return}
+    $("scalp-detail").textContent="ADA-Regime V4-Daten werden nach dem Bot-Neustart angezeigt";
+    $("ada-period").textContent="Der Dashboard-Export meldet noch keine ADA-Regime-V4-Daten.";
+    $("ada-signal-text").textContent="Strategiedaten stehen noch aus";
+    $("ada-chart-empty").hidden=false;
+    $("ada-chart-empty").textContent="ADA-H4-Daten erscheinen nach dem nächsten Dashboard-Export.";
+    return;
+  }
   const amount=n=>`${Number(n)>0?"+":""}${Number(n).toFixed(4)} USD`;
-  const price=n=>`${Number(n).toFixed(5)} USD`;
-  const date=t=>new Date(t).toLocaleString("de-CH",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"});
-  const labels={waiting:"Wartet auf Einstieg",buy_pending:"Kauflimit wartet",position:"Position offen",paused:"Einstieg pausiert",error:"Bot meldet einen Fehler"};
-  $("ada-mode").textContent=labels[a.mode]||"Status unbekannt";
-  $("ada-period").textContent=a.started_at?`Neue 6-Kerzen-Strategie seit ${date(a.started_at)} · Datenstand ${date(a.data_at)}`:"Strategie beginnt nach Schließen des Altbestands";
-  $("ada-stats-period").textContent=`ADA · ${a.started_at?`seit Strategiestart ${date(a.started_at)}`:"Strategie noch nicht gestartet"} · alte Strategiedaten ausgeblendet`;
-  const steps=$("ada-steps");steps.replaceChildren();
-  for(let i=0;i<a.required_closes;i++){const dot=document.createElement("i");dot.classList.toggle("on",i<(a.signal?.falling_closes||0));steps.append(dot)}
-  $("ada-signal-text").textContent=a.signal?`${a.signal.falling_closes} von ${a.required_closes} fallenden Schlusskursen`:"Signalstatus nach Bot-Neustart verfügbar";
-  $("ada-trend").textContent=a.signal?`Kurs unter EMA40: ${a.signal.trend_ok?"ja":"nein"} · Kerze ${date(a.signal.candle_at)}`:"";
+  const price=n=>Number.isFinite(Number(n))?`${Number(n).toFixed(5)} USD`:"–";
+  const date=t=>t?new Date(t).toLocaleString("de-CH",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):"–";
+  const regime=a.signal?.regime||"unbekannt",normal=regime==="normal";
+  const labels={waiting:"Bereit zur Prüfung",buy_pending:"Kauflimit wartet",position:"ADA-Position offen",paused:"Pausiert",error:"Bot meldet einen Fehler"};
+  $("ada-mode").textContent=labels[a.mode]||"Regime wird überwacht";
+  $("ada-period").textContent=`ADA-H4 · SMA150 aus 900 abgeschlossenen Kerzen · Datenstand ${date(a.data_at)}`;
+  $("ada-regime-value").textContent=normal?"NORMAL":regime==="weak"?"SCHWACH":"–";
+  $("ada-regime-value").className=normal?"regime-normal":regime==="weak"?"regime-weak":"";
+  $("ada-regime-description").textContent=normal?"Kurs liegt auf oder über dem SMA150":"Kurs liegt unter dem SMA150";
+  const current=Number(a.signal?.close),sma=Number(a.signal?.sma);
+  $("ada-current-price").textContent=price(current);
+  $("ada-sma-value").textContent=price(sma);
+  const distance=Number.isFinite(current)&&Number.isFinite(sma)&&sma?((current/sma)-1)*100:null;
+  $("ada-price-distance").textContent=distance===null?"Abstand zum SMA150":`${distance>=0?"+":""}${distance.toFixed(2)} % zum SMA150`;
+  const weight=normal?Number(a.normal_target_weight):Number(a.weak_target_weight);
+  $("ada-target-value").textContent=Number.isFinite(weight)?`${(weight*100).toFixed(0)} % ADA`:"–";
+  $("ada-next-check").textContent=`Nächste Prüfung ${date(a.next_evaluation_at)}`;
+  $("ada-signal-text").textContent=normal?"Trendfilter positiv · ADA-Ziel aktiv":"Schwaches Regime · Zielbestand wird reduziert";
+  $("ada-trend").textContent=`Regimewechsel nur bei planmäßiger Prüfung · letzte H4-Kerze ${date(a.signal?.candle_at)}`;
   const box=$("ada-position");box.hidden=!a.position&&!a.active_order;
-  if(a.position){const p=a.position;box.textContent=`Einstieg ${price(p.entry_price)} · Offen ${amount(p.unrealized_pnl_usd)} · Haltedauer ${duration((new Date(a.data_at)-new Date(p.opened_at))/1000)} · Ziel ${p.target_price?price(p.target_price):"–"} · Stop-Schwelle ${p.stop_price?price(p.stop_price):"–"}`}
-  else if(a.active_order){box.textContent=`Kauflimit ${price(a.active_order.price)} · ${a.active_order.quantity} ADA · offen seit ${duration(a.active_order.age_seconds)}`}
+  if(a.position){const p=a.position;box.textContent=`Bestand ${Number(p.quantity).toLocaleString("de-CH",{maximumFractionDigits:4})} ADA · Wert ${money.format(Number(p.value_usd||0))} USD · Ø Einstieg ${price(p.entry_price)} · Offen ${amount(p.unrealized_pnl_usd)}`}
+  else if(a.active_order){box.textContent=`${a.active_order.side} ${a.active_order.type} · ${Number(a.active_order.quantity).toLocaleString("de-CH",{maximumFractionDigits:4})} ADA · Limit ${price(a.active_order.price)} · offen seit ${duration(a.active_order.age_seconds)}`}
   const list=$("ada-timeline");list.replaceChildren();
-  const reasons={TAKE_PROFIT:"Gewinnziel erreicht",STOP_LOSS:"Stop-Ausstieg ausgeführt",TIMEOUT:"Zeitlimit erreicht",DAY_END:"Tagesende",SPLIT_ADJUSTMENT:"Kapitalanpassung"};
-  for(const t of a.timeline){const card=document.createElement("article");card.className="ada-trade-card";
-    const gain=document.createElement("strong");gain.textContent=amount(t.net_pnl_usd);gain.className=t.net_pnl_usd>=0?"positive":"negative";
-    const reason=document.createElement("span");reason.className="ada-reason";reason.textContent=reasons[t.reason]||"Position geschlossen";
-    const detail=document.createElement("small");detail.textContent=`${price(t.entry_price)} → ${price(t.exit_price)} · ${duration(t.hold_seconds)}`;
-    const stamp=document.createElement("small");stamp.textContent=date(t.closed_at);card.append(gain,reason,detail,stamp);list.append(card)}
-  if(!a.timeline.length)list.textContent="Noch keine abgeschlossenen Trades der neuen Strategie.";
-  const more=$("ada-more");more.hidden=a.timeline.length<=6;let expanded=false;
-  const fold=()=>{[...list.children].forEach((card,i)=>card.hidden=!expanded&&i>=6);more.textContent=expanded?"Weniger anzeigen":`${a.timeline.length-6} weitere Trades anzeigen`;more.setAttribute("aria-expanded",String(expanded))};
-  more.onclick=()=>{expanded=!expanded;fold()};fold();
-  $("ada-integrity").textContent=a.count_matches_state?"Ein Trade umfasst Kauf und vollständigen Verkauf; Teilfüllungen werden zusammengefasst.":"Die rekonstruierte Trade-Anzahl weicht vom Zähler ab. Historie bitte prüfen.";
+  for(const t of a.timeline||[]){const card=document.createElement("article");card.className="ada-trade-card";const gain=document.createElement("strong");gain.textContent=amount(t.net_pnl_usd);gain.className=t.net_pnl_usd>=0?"positive":"negative";const reason=document.createElement("span");reason.className="ada-reason";reason.textContent=t.reason||"Rebalancing abgeschlossen";const detail=document.createElement("small");detail.textContent=`${price(t.entry_price)} → ${price(t.exit_price)} · ${duration(t.hold_seconds)}`;const stamp=document.createElement("small");stamp.textContent=date(t.closed_at);card.append(gain,reason,detail,stamp);list.append(card)}
+  if(!(a.timeline||[]).length)list.textContent="Noch keine abgeschlossenen ADA-Rebalancing-Zyklen.";
+  const more=$("ada-more");more.hidden=list.children.length<=6;let expanded=false;const fold=()=>{[...list.children].forEach((card,i)=>card.hidden=!expanded&&i>=6);more.textContent=expanded?"Weniger anzeigen":`${list.children.length-6} weitere Einträge anzeigen`;more.setAttribute("aria-expanded",String(expanded))};more.onclick=()=>{expanded=!expanded;fold()};fold();
+  $("ada-integrity").textContent=a.count_matches_state?"ADA-Fills und Strategiehistorie werden aus dem bestehenden Bot-Ledger abgeleitet.":"Die rekonstruierte Ausführungshistorie weicht vom Ledger ab. Bitte prüfen.";
   const s=data.performance_details.scalping;
   for(const [id,key] of [["scalp-realized","realized_pnl_usd"],["scalp-unrealized","unrealized_pnl_usd"],["scalp-net","net_pnl_usd"],["stat-avg-win","average_win_usd"],["stat-avg-loss","average_loss_usd"]])$(id).textContent=s[key]==null?"–":amount(s[key]);
   $("scalp-fees").textContent=`${Number(s.fees_usd).toFixed(4)} USD`;
@@ -41,17 +51,14 @@ function renderAdaActivity(data){
 function drawAdaPrice(a){
  const canvas=$("ada-price-chart"),ctx=canvas.getContext("2d"),rows=(a.candles||[]).filter(r=>Number.isFinite(Number(r.value)));
  $("ada-chart-empty").hidden=rows.length>1;
- $("ada-price-time").textContent=rows.length?`M1 · ${new Date(rows.at(-1).time).toLocaleString("de-CH")}`:"Noch keine Kursdaten";
- function draw(){const w=canvas.clientWidth,h=canvas.clientHeight,dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);if(rows.length<2)return;
- const levels=a.position?[[a.position.entry_price,"Einstieg","#5dc9ff"],[a.position.target_price,"Ziel","#3ce5ae"],[a.position.stop_price,"Stop","#ffbd5a"]].filter(x=>x[0]>0):[];
- const vals=rows.map(r=>Number(r.value)).concat(levels.map(x=>x[0]));let lo=Math.min(...vals),hi=Math.max(...vals),pad=Math.max((hi-lo)*.15,.00005);lo-=pad;hi+=pad;
- const t0=Date.parse(rows[0].time),t1=Date.parse(rows.at(-1).time),x=t=>68+(t-t0)/(t1-t0)*(w-85),y=v=>14+(hi-v)/(hi-lo)*(h-40);
- ctx.font="11px system-ui";ctx.textAlign="right";ctx.fillStyle="#78978e";
- for(let i=0;i<4;i++){let v=lo+(hi-lo)*i/3;ctx.fillText(v.toFixed(5),60,y(v)+4);ctx.strokeStyle="#20392f";ctx.beginPath();ctx.moveTo(68,y(v));ctx.lineTo(w-15,y(v));ctx.stroke()}
- ctx.beginPath();rows.forEach((r,i)=>i?ctx.lineTo(x(Date.parse(r.time)),y(r.value)):ctx.moveTo(x(Date.parse(r.time)),y(r.value)));ctx.strokeStyle="#3ce5ae";ctx.lineWidth=2;ctx.stroke();
- for(const [v,label,color] of levels){ctx.strokeStyle=color;ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(68,y(v));ctx.lineTo(w-15,y(v));ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=color;ctx.fillText(label,w-18,y(v)-5)}
- for(const m of a.markers||[]){const t=Date.parse(m.time);if(t<t0||t>t1)continue;ctx.fillStyle=m.side==="BUY"?"#5dc9ff":"#ffffff";ctx.beginPath();ctx.arc(x(t),y(m.price),4,0,Math.PI*2);ctx.fill()}
- ctx.fillStyle="#78978e";ctx.textAlign="left";ctx.fillText(new Date(t0).toLocaleTimeString("de-CH",{hour:"2-digit",minute:"2-digit"}),68,h-4);ctx.textAlign="right";ctx.fillText(new Date(t1).toLocaleTimeString("de-CH",{hour:"2-digit",minute:"2-digit"}),w-15,h-4);
+ $("ada-price-time").textContent=rows.length?`H4 · ${new Date(rows.at(-1).time).toLocaleString("de-CH")}`:"H4-Schlusskurse";
+ function draw(){const w=canvas.clientWidth,h=canvas.clientHeight,dpr=Math.min(window.devicePixelRatio||1,2);if(!w||!h)return;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);if(rows.length<2)return;
+ const sma=Number(a.signal?.sma),vals=rows.map(r=>Number(r.value)).concat(Number.isFinite(sma)?[sma]:[]);let lo=Math.min(...vals),hi=Math.max(...vals),pad=Math.max((hi-lo)*.14,Math.abs(hi)*.002);lo-=pad;hi+=pad;
+ const t0=Date.parse(rows[0].time),t1=Date.parse(rows.at(-1).time),x=t=>54+(t-t0)/(t1-t0||1)*(w-68),y=v=>12+(hi-v)/(hi-lo)*(h-36);
+ ctx.font="11px system-ui";ctx.textAlign="right";ctx.fillStyle="#78978e";for(let i=0;i<4;i++){const v=lo+(hi-lo)*i/3;ctx.fillText(v.toFixed(5),48,y(v)+4);ctx.strokeStyle="rgba(148,190,177,.12)";ctx.beginPath();ctx.moveTo(54,y(v));ctx.lineTo(w-12,y(v));ctx.stroke()}
+ ctx.beginPath();rows.forEach((r,i)=>i?ctx.lineTo(x(Date.parse(r.time)),y(Number(r.value))):ctx.moveTo(x(Date.parse(r.time)),y(Number(r.value))));ctx.strokeStyle="#43dfaa";ctx.lineWidth=2.2;ctx.stroke();
+ if(Number.isFinite(sma)){ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(54,y(sma));ctx.lineTo(w-12,y(sma));ctx.strokeStyle="#8ea5ff";ctx.lineWidth=1.5;ctx.stroke();ctx.setLineDash([])}
+ ctx.fillStyle="#78978e";ctx.textAlign="left";ctx.fillText(new Date(t0).toLocaleDateString("de-CH",{day:"2-digit",month:"2-digit"}),54,h-3);ctx.textAlign="right";ctx.fillText(new Date(t1).toLocaleDateString("de-CH",{day:"2-digit",month:"2-digit"}),w-12,h-3);
  }new ResizeObserver(draw).observe(canvas);draw();
 }
 const pct=(value,signed=false)=>`${signed&&value>0?"+":""}${Number(value).toFixed(2)} %`;

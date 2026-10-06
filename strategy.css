@@ -37,3 +37,13 @@
 @media(max-width:900px){.ada-detail-grid{grid-template-columns:minmax(0,1fr) minmax(230px,.8fr)}}
 @media(max-width:700px){.ada-detail-grid{grid-template-columns:1fr}.ada-price-wrap{height:235px}.ada-rule-card{gap:12px}}
 @media(max-width:420px){.ada-chart-card,.ada-rule-card{padding:14px}.ada-price-wrap{height:205px}.ada-regime-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Regime metric tiles */
+.ada-regime-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:20px 0 10px}
+.ada-regime-card{min-width:0;padding:15px 16px;border:1px solid rgba(148,190,177,.13);border-radius:14px;background:rgba(5,17,15,.56);display:flex;flex-direction:column;gap:8px}
+.ada-regime-card>span,.ada-regime-card>small{color:var(--muted);font-size:.72rem;line-height:1.4}
+.ada-regime-card>strong{font-size:clamp(1rem,1.5vw,1.3rem);font-variant-numeric:tabular-nums;letter-spacing:-.025em;overflow-wrap:anywhere}
+.ada-regime-card>strong.regime-normal{color:#43dfaa}.ada-regime-card>strong.regime-weak{color:#ffbd5a}
+.ada-story>.panel-heading,.ada-story>.ada-subtitle,.ada-story>.ada-regime-grid,.ada-story>.ada-detail-grid,.ada-story>.ada-timeline-heading,.ada-story>.ada-timeline,.ada-story>.ada-more,.ada-story>#ada-integrity{position:relative}
+@media(max-width:900px){.ada-regime-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.ada-regime-grid{gap:7px;margin:15px 0 8px}.ada-regime-card{padding:11px}.ada-regime-card>small{font-size:.67rem}}

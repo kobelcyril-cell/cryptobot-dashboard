@@ -44,7 +44,7 @@
     </section>
 
     <section class="panel ada-story" aria-label="ADA Regime und Rebalancing">
-      <div class="panel-heading"><div><p class="eyebrow">STRATEGIE 2 · ADA REGIME V4</p><h2>ADA Regime &amp; Rebalancing</h2></div><span class="ada-badge" id="ada-mode">Wird geladen</span></div>
+      <div class="panel-heading"><div><p class="eyebrow">STRATEGIE 2 · ADA REGIME</p><h2>ADA Regime &amp; Rebalancing</h2></div><span class="ada-badge" id="ada-mode">Wird geladen</span></div>
       <p class="ada-subtitle" id="ada-period">ADA-H4 im Verhältnis zum langfristigen Trend</p>
       <div class="ada-regime-grid">
         <div class="ada-regime-card"><span>Regime</span><strong id="ada-regime-value">–</strong><small id="ada-regime-description">Wird geladen</small></div>
@@ -52,13 +52,25 @@
         <div class="ada-regime-card"><span>SMA150</span><strong id="ada-sma-value">–</strong><small>900 abgeschlossene H4-Kerzen</small></div>
         <div class="ada-regime-card"><span>Ziel im Regime</span><strong id="ada-target-value">–</strong><small id="ada-next-check">Nächste Prüfung –</small></div>
       </div>
-      <div class="ada-signal"><strong id="ada-signal-text">Warte auf Regime-Daten</strong><span id="ada-trend">Prüfung alle sechs Stunden</span></div>
-      <div class="ada-position" id="ada-position" hidden></div>
-      <div class="ada-price-heading"><span>ADA-Kurs und 150-Tage-SMA</span><small id="ada-price-time">H4-Schlusskurse</small></div>
-      <div class="ada-price-wrap"><canvas id="ada-price-chart" role="img" aria-label="ADA-H4-Kurs im Vergleich zum 150-Tage-SMA"></canvas><div class="ada-chart-empty" id="ada-chart-empty">Kursdaten erscheinen nach dem nächsten Bot-Neustart.</div></div>
-      <div class="marker-legend ada-chart-legend"><span><i class="buy-marker"></i>ADA-Kurs</span><span><i class="sma-marker"></i>SMA150</span></div>
-      <p class="ada-note">Neubewertung alle sechs Stunden. Orders werden als Post-only-Limits platziert; V4 erzwingt keinen Market-Exit.</p>
-      <div class="ada-timeline-heading"><h3>Letzte ADA-Ausführungen</h3><span>Nach Gebühren</span></div>
+      <div class="ada-detail-grid">
+        <div class="ada-chart-card">
+          <div class="ada-price-heading"><div><span>ADA-Kurs &amp; langfristiger Trend</span><small>Letzte 40 Tage · 4-Stunden-Kerzen</small></div><small id="ada-price-time">H4-Schlusskurse</small></div>
+          <div class="ada-price-wrap"><canvas id="ada-price-chart" role="img" aria-label="ADA-H4-Kurs im Vergleich zum gleitenden 150-Tage-Durchschnitt"></canvas><div class="ada-chart-empty" id="ada-chart-empty">Kursdaten werden geladen.</div></div>
+          <div class="marker-legend ada-chart-legend"><span><i class="buy-marker"></i>ADA-Kurs</span><span><i class="sma-marker"></i>150-Tage-Durchschnitt</span></div>
+        </div>
+        <aside class="ada-rule-card">
+          <div class="ada-signal"><span class="ada-signal-dot" id="ada-signal-dot"></span><div><strong id="ada-signal-text">Warte auf Regime-Daten</strong><span id="ada-trend">Prüfung alle sechs Stunden</span></div></div>
+          <div class="ada-position" id="ada-position" hidden></div>
+          <div class="ada-rule-list">
+            <div><span>Prüfintervall</span><strong id="ada-check-interval">6 Stunden</strong></div>
+            <div><span>Normales Regime</span><strong id="ada-normal-target">100 % ADA</strong></div>
+            <div><span>Schwaches Regime</span><strong id="ada-weak-target">0 % ADA</strong></div>
+            <div><span>Ausführung</span><strong>Post-only-Limit</strong></div>
+          </div>
+          <p class="ada-rule-foot">Neues Ziel wird bei der nächsten planmäßigen Prüfung abgeglichen.</p>
+        </aside>
+      </div>
+      <div class="ada-timeline-heading"><h3>Letzte ADA-Ausführungen</h3><span>Netto nach Gebühren</span></div>
       <div class="ada-timeline" id="ada-timeline"></div>
       <button type="button" id="ada-more" class="ada-more" hidden>Weitere Trades anzeigen</button>
       <p class="ada-note" id="ada-integrity"></p>
@@ -71,9 +83,9 @@
           <div><b>BIG-4</b><span id="big4-realized">–</span><span id="big4-open">–</span><span id="big4-fees">–</span><strong id="big4-net">–</strong></div>
           <div><b id="scalp-stats-name">Scalping</b><span id="scalp-realized">–</span><span id="scalp-unrealized">–</span><span id="scalp-fees">–</span><strong id="scalp-net">–</strong></div>
         </div>
-        <p class="ada-note" id="ada-stats-period">ADA-Kennzahlen · seit Start von Regime V4 · Gebühren im Netto enthalten</p>
+        <p class="ada-note" id="ada-stats-period">ADA-Kennzahlen · seit Strategiestart · Gebühren im Netto enthalten</p>
         <div class="stat-strip">
-          <div><span>Trades</span><b id="stat-trades">–</b></div><div><span>Gewinnquote</span><b id="stat-winrate">–</b></div>
+          <div><span>Zyklen</span><b id="stat-trades">–</b></div><div><span>Gewinnquote</span><b id="stat-winrate">–</b></div>
           <div><span>Ø Gewinn</span><b id="stat-avg-win">–</b></div><div><span>Ø Verlust</span><b id="stat-avg-loss">–</b></div>
           <div><span>Maker-Anteil</span><b id="stat-maker">–</b></div><div><span>Maker / Taker</span><b id="stat-maker-taker">–</b></div>
         </div>
@@ -83,7 +95,7 @@
         <div class="panel-heading"><div><p class="eyebrow">BETRIEB</p><h2>Live-Status</h2></div></div>
         <div class="operation-list">
           <div><i id="big4-health"></i><span><b>BIG-4</b><small id="big4-health-text">–</small></span></div>
-          <div><i id="scalp-health"></i><span><b>ADA Regime V4</b><small id="scalp-health-text">–</small></span></div>
+          <div><i id="scalp-health"></i><span><b>ADA Regime</b><small id="scalp-health-text">–</small></span></div>
           <div><i class="neutral"></i><span><b>Letzter API-Erfolg</b><small id="api-success">–</small></span></div>
         </div>
         <div class="rebalance-countdown">

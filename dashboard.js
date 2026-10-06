@@ -7,8 +7,8 @@ function renderAdaActivity(data){
   if(!hasNewAdaData(data)){
     $("ada-mode").textContent="Warte auf ADA V4";
     for(const id of ["scalp-return","scalp-realized","scalp-unrealized","scalp-fees","scalp-net","stat-trades","stat-winrate","stat-avg-win","stat-avg-loss","stat-maker","stat-maker-taker","period-24h","period-7d","period-all"])$(id).textContent="–";
-    $("scalp-detail").textContent="ADA-Regime V4-Daten werden nach dem Bot-Neustart angezeigt";
-    $("ada-period").textContent="Der Dashboard-Export meldet noch keine ADA-Regime-V4-Daten.";
+    $("scalp-detail").textContent="ADA-Regime-Daten werden nach dem Bot-Neustart angezeigt";
+    $("ada-period").textContent="Der Dashboard-Export meldet noch keine aktuellen ADA-Regime-Daten.";
     $("ada-signal-text").textContent="Strategiedaten stehen noch aus";
     $("ada-chart-empty").hidden=false;
     $("ada-chart-empty").textContent="ADA-H4-Daten erscheinen nach dem nächsten Dashboard-Export.";
@@ -20,7 +20,7 @@ function renderAdaActivity(data){
   const regime=a.signal?.regime||"unbekannt",normal=regime==="normal";
   const labels={waiting:"Bereit zur Prüfung",buy_pending:"Kauflimit wartet",position:"ADA-Position offen",paused:"Pausiert",error:"Bot meldet einen Fehler"};
   $("ada-mode").textContent=labels[a.mode]||"Regime wird überwacht";$("ada-mode").classList.remove("trial");
-  $("ada-period").textContent=`ADA-H4 · SMA150 aus 900 abgeschlossenen Kerzen · Datenstand ${date(a.data_at)}`;
+  $("ada-period").textContent=`ADA-H4 · 150-Tage-Durchschnitt aus abgeschlossenen Kerzen · Datenstand ${date(a.data_at)}`;
   $("ada-regime-value").textContent=normal?"NORMAL":regime==="weak"?"SCHWACH":"–";
   $("ada-regime-value").className=normal?"regime-normal":regime==="weak"?"regime-weak":"";
   $("ada-regime-description").textContent=normal?"Kurs liegt auf oder über dem SMA150":"Kurs liegt unter dem SMA150";
@@ -31,9 +31,9 @@ function renderAdaActivity(data){
   $("ada-price-distance").textContent=distance===null?"Abstand zum SMA150":`${distance>=0?"+":""}${distance.toFixed(2)} % zum SMA150`;
   const weight=normal?Number(a.normal_target_weight):Number(a.weak_target_weight);
   $("ada-target-value").textContent=Number.isFinite(weight)?`${(weight*100).toFixed(0)} % ADA`:"–";
-  $("ada-next-check").textContent=`Nächste Prüfung ${date(a.next_evaluation_at)}`;
-  $("ada-signal-text").textContent=normal?"Trendfilter positiv · ADA-Ziel aktiv":"Schwaches Regime · Zielbestand wird reduziert";
-  $("ada-trend").textContent=`Regimewechsel nur bei planmäßiger Prüfung · letzte H4-Kerze ${date(a.signal?.candle_at)}`;
+  $("ada-next-check").textContent=`Nächste Prüfung ${date(a.next_evaluation_at)}`;$("ada-check-interval").textContent=`Alle ${Number(a.evaluation_interval_hours||6)} Stunden`;$("ada-normal-target").textContent=`${(Number(a.normal_target_weight)*100).toFixed(0)} % ADA`;$("ada-weak-target").textContent=`${(Number(a.weak_target_weight)*100).toFixed(0)} % ADA`;
+  $("ada-signal-text").textContent=normal?"ADA liegt im normalen Regime":"ADA liegt im schwachen Regime";$("ada-signal-dot").classList.toggle("weak",!normal);
+  $("ada-trend").textContent=`Letzte Regimebewertung ${date(a.signal?.candle_at)}`;
   const box=$("ada-position");box.hidden=!a.position&&!a.active_order;
   if(a.position){const p=a.position;box.textContent=`Bestand ${Number(p.quantity).toLocaleString("de-CH",{maximumFractionDigits:4})} ADA · Wert ${money.format(Number(p.value_usd||0))} USD · Ø Einstieg ${price(p.entry_price)} · Offen ${amount(p.unrealized_pnl_usd)}`}
   else if(a.active_order){box.textContent=`${a.active_order.side} ${a.active_order.type} · ${Number(a.active_order.quantity).toLocaleString("de-CH",{maximumFractionDigits:4})} ADA · Limit ${price(a.active_order.price)} · offen seit ${duration(a.active_order.age_seconds)}`}

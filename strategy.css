@@ -29,3 +29,11 @@
 .strategy-card p { font-size: .72rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 @media (max-width: 650px) { .strategy-grid { grid-template-columns: 1fr; } }
 
+
+/* Strategy 2: chart-led regime overview */
+.ada-detail-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(265px,.8fr);gap:14px;margin:10px 0 24px;align-items:stretch}
+.ada-chart-card,.ada-rule-card{min-width:0;border:1px solid rgba(148,190,177,.13);border-radius:16px;background:rgba(5,17,15,.52);padding:18px}
+.ada-price-heading{margin:0 0 12px}.ada-price-heading>div{display:grid;gap:5px}.ada-price-heading>div>span{font-weight:700}.ada-price-heading>div>small{color:var(--muted);font-size:.72rem}.ada-price-wrap{height:270px}.ada-rule-card{display:flex;flex-direction:column;gap:16px}.ada-signal{display:flex;align-items:flex-start;gap:11px;padding:4px 0 14px;border-bottom:1px solid var(--line)}.ada-signal>div{display:grid;gap:7px}.ada-signal>div>span{color:var(--muted);font-size:.72rem;line-height:1.45}.ada-signal-dot{flex:0 0 10px;width:10px;height:10px;margin-top:5px;border-radius:50%;background:#43dfaa;box-shadow:0 0 0 5px rgba(67,223,170,.12)}.ada-signal-dot.weak{background:#ffbd5a;box-shadow:0 0 0 5px rgba(255,189,90,.12)}.ada-rule-list{display:grid;gap:0}.ada-rule-list>div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(148,190,177,.09)}.ada-rule-list>div:last-child{border-bottom:0}.ada-rule-list span{color:var(--muted);font-size:.76rem}.ada-rule-list strong{text-align:right;font-size:.78rem;font-variant-numeric:tabular-nums}.ada-rule-foot{margin-top:auto;padding-top:12px;color:var(--muted);font-size:.72rem;line-height:1.5}.ada-position{overflow-wrap:anywhere}
+@media(max-width:900px){.ada-detail-grid{grid-template-columns:minmax(0,1fr) minmax(230px,.8fr)}}
+@media(max-width:700px){.ada-detail-grid{grid-template-columns:1fr}.ada-price-wrap{height:235px}.ada-rule-card{gap:12px}}
+@media(max-width:420px){.ada-chart-card,.ada-rule-card{padding:14px}.ada-price-wrap{height:205px}.ada-regime-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

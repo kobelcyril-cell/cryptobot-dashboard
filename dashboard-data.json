@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-10-19T17:53:38.320000Z",
+  "generated_at": "2026-10-19T17:59:12.944000Z",
   "bot": {
     "mode": "LIVE BIG-4 + ADA",
-    "last_cycle": "2026-10-19T17:53:38.320000Z",
-    "status": "BIG4: Noch nicht faellig | SCALP: FEHLER (Big-4 laeuft weiter): Netzwerkfehler bei private/user-balance: The read operation timed out",
+    "last_cycle": "2026-10-19T17:59:12.944000Z",
+    "status": "BIG4: FEHLER (Scalper laeuft weiter): Netzwerkfehler bei private/user-balance: The read operation timed out | SCALP: FEHLER (Big-4 laeuft weiter): Netzwerkfehler bei private/user-balance: The read operation timed out",
     "regime": "normal"
   },
   "portfolio": {
@@ -74,9 +74,9 @@
     {
       "symbol": "ADA",
       "name": "Scalping \u00b7 eigener Bestand",
-      "value": 4.327,
-      "allocation_pct": 17.334793479198723,
-      "change_since_buy_pct": -21.799320465553386,
+      "value": 4.3276,
+      "allocation_pct": 17.337197194495122,
+      "change_since_buy_pct": -21.788476830767006,
       "average_buy_price": 0.27666
     }
   ],
@@ -12949,19 +12949,23 @@
     {
       "time": "2026-10-19T17:52:45.092000Z",
       "value": 24.96720622395
+    },
+    {
+      "time": "2026-10-19T17:58:19.474000Z",
+      "value": 24.96135881395
     }
   ],
   "strategies": {
     "big4": {
       "name": "Big-4 Wochen-Rebalancing",
-      "status": "Noch nicht faellig",
-      "equity": 19.96928704116,
-      "return_pct": -8.206455110750088,
-      "pnl_usd": -1.63874314,
+      "status": "FEHLER (Scalper laeuft weiter): Netzwerkfehler bei private/user-balance: The read operation timed out",
+      "equity": 19.96868704116,
+      "return_pct": -8.209762609930818,
+      "pnl_usd": -1.63934314,
       "regime": "normal",
       "next_action": "Kontrolle alle 7 Tage",
       "target_allocation_pct": 80.0,
-      "actual_allocation_pct": 80.00080119837021,
+      "actual_allocation_pct": 79.99839748307382,
       "protected_cash_target_usd": 0.0,
       "protected_cash_actual_usd": 0.0,
       "protected_cash_pct_of_big4": 0.0
@@ -12969,31 +12973,31 @@
     "scalping": {
       "name": "ADA \u00b7 150-Tage-Regime",
       "status": "FEHLER (Big-4 laeuft weiter): Netzwerkfehler bei private/user-balance: The read operation timed out",
-      "equity": 4.99207177279,
-      "return_pct": -24.823361049302946,
-      "pnl_usd": -1.2392,
+      "equity": 4.99267177279,
+      "return_pct": -24.808360260138766,
+      "pnl_usd": -1.2386,
       "completed_trades": 0,
       "fees": 0.0,
-      "position_value": 4.327,
+      "position_value": 4.3276,
       "active_order": false,
       "target_allocation_pct": 20.0,
-      "actual_allocation_pct": 19.999198801629788,
+      "actual_allocation_pct": 20.001602516926187,
       "split_transition": false
     }
   },
   "performance_details": {
     "big4": {
       "realized_pnl_usd": 0.0,
-      "unrealized_pnl_usd": -1.63874314,
-      "net_pnl_usd": -1.63874314,
+      "unrealized_pnl_usd": -1.63934314,
+      "net_pnl_usd": -1.63934314,
       "fees_usd": 0.0,
       "executions": 0,
       "note": "Netto aus Portfolio-PnL abzueglich Scalping-PnL; Realisiert aus BIG-4-Fills, offen als Differenz"
     },
     "scalping": {
       "realized_pnl_usd": 0.0,
-      "unrealized_pnl_usd": -1.2392,
-      "net_pnl_usd": -1.2392,
+      "unrealized_pnl_usd": -1.2386,
+      "net_pnl_usd": -1.2386,
       "fees_usd": 0.0,
       "completed_trades": 0,
       "win_rate_pct": null,
@@ -13011,7 +13015,7 @@
         "trades": 0
       },
       "since_start": {
-        "pnl_usd": -1.2392,
+        "pnl_usd": -1.2386,
         "trades": 0
       }
     }
@@ -25885,6 +25889,10 @@
       {
         "time": "2026-10-19T17:52:45.092000Z",
         "value": -1.63289573
+      },
+      {
+        "time": "2026-10-19T17:58:19.474000Z",
+        "value": -1.63934314
       }
     ],
     "scalping": [
@@ -38755,6 +38763,10 @@
       {
         "time": "2026-10-19T17:52:45.092000Z",
         "value": -1.2392
+      },
+      {
+        "time": "2026-10-19T17:58:19.474000Z",
+        "value": -1.2386
       }
     ]
   },
@@ -38762,10 +38774,10 @@
     "scalping": []
   },
   "operations": {
-    "last_successful_api_at": "2026-10-19T17:53:38.389000Z",
+    "last_successful_api_at": "2026-10-19T17:59:13.016000Z",
     "big4": {
-      "level": "ok",
-      "status": "Noch nicht faellig",
+      "level": "error",
+      "status": "FEHLER (Scalper laeuft weiter): Netzwerkfehler bei private/user-balance: The read operation timed out",
       "next_rebalance_at": "2026-10-26T13:18:47.192000Z",
       "rebalance_due": false,
       "last_rebalance": {
@@ -38799,7 +38811,7 @@
     "strategy": "ada_regime_rebalance_v4",
     "validated": false,
     "started_at": "2026-10-06T11:02:33.051000Z",
-    "data_at": "2026-10-19T17:53:38.320000Z",
+    "data_at": "2026-10-19T17:59:12.944000Z",
     "mode": "error",
     "required_closes": 900,
     "signal": {
@@ -39770,7 +39782,7 @@
         "value": 0.21796
       }
     ],
-    "quote_at": "2026-10-19T17:52:19.946000Z",
+    "quote_at": "2026-10-19T17:55:54.815000Z",
     "normal_target_weight": 1.0,
     "weak_target_weight": 0.0,
     "evaluation_interval_hours": 6,
@@ -39778,9 +39790,9 @@
     "next_evaluation_at": "2026-10-19T21:37:17.198000Z",
     "position": {
       "quantity": 20.0,
-      "value_usd": 4.327,
+      "value_usd": 4.3276,
       "entry_price": 0.27666,
-      "unrealized_pnl_usd": -1.2392,
+      "unrealized_pnl_usd": -1.2386,
       "opened_at": "2026-10-06T11:10:32.626000Z",
       "target_price": null,
       "stop_price": null
